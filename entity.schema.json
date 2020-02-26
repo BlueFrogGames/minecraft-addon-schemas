@@ -13,25 +13,48 @@
                 "description": {
                     "type": "object",
                     "properties": {
-
+                        "identifier": {
+                            "type": "string",
+                            "description": "ID used to reference and summon entity"
+                        },
+                        "is_spawnable": {
+                            "type": "boolean",
+                            "default": true
+                        },
+                        "is_summonable": {
+                            "type": "boolean",
+                            "default": true
+                        },
+                        "is_experimental": {
+                            "type": "boolean",
+                            "default": false
+                        }
                     }
                 },
                 "component_groups": {
-                    "type": "object"
+                    "type": "object",
+                    "patternProperties": {
+                        "^.*$": {
+                            "$ref": "https://raw.githubusercontent.com/BlueFrog130/minecraft-add-on-schemas/master/entities/components.schema.json"
+                        }
+                    }
                 },
                 "components": {
-                    "type": "object"
+                    "type": "object",
+                    "$ref": "https://raw.githubusercontent.com/BlueFrog130/minecraft-add-on-schemas/master/entities/components.schema.json"
                 },
                 "events": {
+                    "type": "object",
                     "allOf": [
                         { "$ref": "https://raw.githubusercontent.com/BlueFrog130/minecraft-add-on-schemas/master/entities/built-in_events.schema.json" },
-                        { 
+                        {
                             "patternProperties": {
                                 "^.+$": {
                                     "$ref": "https://raw.githubusercontent.com/BlueFrog130/minecraft-add-on-schemas/master/types/event.schema.json"
                                 }
                             },
-                            "additionalProperties": false
+                            "additionalProperties": false,
+                            "default": {}
                         }
                     ]
                 }
