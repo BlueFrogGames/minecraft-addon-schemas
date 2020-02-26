@@ -28,7 +28,7 @@
                         { 
                             "patternProperties": {
                                 "^[\\w\\-]+$": {
-                                    "$ref": "https://raw.githubusercontent.com/BlueFrog130/minecraft-add-on-schemas/master/types/events.schema.json"
+                                    "$ref": "https://raw.githubusercontent.com/BlueFrog130/minecraft-add-on-schemas/master/types/event.schema.json"
                                 }
                             },
                             "additionalProperties": false
