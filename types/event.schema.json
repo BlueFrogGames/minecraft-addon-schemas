@@ -1,0 +1,64 @@
+{
+    "$schema": "http://json-schema.org/draft/2019-09/schema#",
+    "title": "Event",
+    "type": "object",
+    "allOf": [
+        { "$ref": "#/definitions/add-remove" },
+        {
+            "properties": {
+                "randomize": {
+                    "type": "array",
+                    "items": {
+                        "allOf": [
+                            { "$ref": "#/definitions/add-remove" },
+                            {
+                                "properties": {
+                                    "weight": {
+                                        "type": "number"
+                                    }
+                                },
+                                "required": ["weight"]
+                            }
+                        ]
+                        
+                    }
+                }
+            }
+        }
+    ],
+    "definitions": {
+        "component_groups": {
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        },
+        "add": {
+            "type": "object",
+            "properties": {
+                "component_groups": {
+                    "$ref": "#/definitions/component_groups"
+                }
+            }
+        },
+        "remove": {
+            "type": "object",
+            "properties": {
+                "component_groups": {
+                    "$ref": "#/definitions/component_groups"
+                }
+            }
+        },
+        "add-remove": {
+            "type": "object",
+            "properties": {
+                "add": {
+                    "$ref": "#/definitions/add"
+                },
+                "remove": {
+                    "$ref": "#/definitions/remove"
+                }
+            }
+        }
+    }
+}

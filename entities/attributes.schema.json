@@ -1,0 +1,58 @@
+{
+    "$schema": "http://json-schema.org/draft/2019-09/schema#",
+    "title": "Server Entity Documentation",
+    "type": "object",
+    "properties": {
+        "minecraft:attack": {
+            "type": "object",
+            "description": "Defines an entity's melee attack and any additional effects on it.",
+            "properties": {
+                "damage": {
+                    "description": "Range of the random amount of damage the melee attack deals. A negative value can heal the entity instead of hurting it",
+                    "$ref": "https://raw.githubusercontent.com/BlueFrog130/minecraft-add-on-schemas/master/types/range.schema.json"
+                },
+                "effect_duration": {
+                    "description": "Duration in seconds of the status ailment applied to the damaged entity\nDefault: 0.0",
+                    "type": "number"
+                },
+                "effect_name": {
+                    "description": "Identifier of the status ailment to apply to an entity attacked by this entity's melee attack",
+                    "type": "string",
+                    "enum": ["speed","slowness","haste","mining_fatigue","strength","instant_health","instant_damage","jump_boost","nausea","regeneration","resistance","fire_resistance","water_breathing","invisibility","blindness","night_vision","hunger","weakness","poison","wither","health_boost","absorption","saturation","levitation","fatal_poison","conduit_power","slow_falling","bad_omen","village_hero"]
+                }
+            }
+        },
+        "minecraft:spell_effects": {
+            "type": "object",
+            "description": "Defines what mob effects to add and remove to the entity when adding this component.",
+            "properties": {
+                "add_effects": {
+                    "description": "List of effects to add to this entity after adding this component",
+                    "type": "array",
+                    "items": {
+                        "$ref": "https://raw.githubusercontent.com/BlueFrog130/minecraft-add-on-schemas/master/types/effects.schema.json"
+                    }
+                },
+                "remove_effects": {
+                    "description": "List of identifiers of effects to be removed from this entity after adding this component",
+                    "type": "string",
+                    "enum": ["speed","slowness","haste","mining_fatigue","strength","instant_health","instant_damage","jump_boost","nausea","regeneration","resistance","fire_resistance","water_breathing","invisibility","blindness","night_vision","hunger","weakness","poison","wither","health_boost","absorption","saturation","levitation","fatal_poison","conduit_power","slow_falling","bad_omen","village_hero"]
+                }
+            }
+        },
+        "minecraft:strength": {
+            "type": "object",
+            "description": "Defines the entity's strength to carry items.",
+            "properties": {
+                "max": {
+                    "description": "The maximum strength of this entity\nDefault: 5",
+                    "type": "integer"
+                },
+                "value": {
+                    "description": "The initial value of the strength\nDefault: 1",
+                    "type": "integer"
+                }
+            }
+        }
+    }
+}

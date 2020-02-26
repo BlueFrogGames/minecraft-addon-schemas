@@ -1,0 +1,42 @@
+{
+    "$schema": "http://json-schema.org/draft/2019-09/schema#",
+    "type": "object",
+    "title": "Server Entity",
+    "description": "Behavior pack entity definition",
+    "properties": {
+        "format_version": {
+            "type": "string"
+        },
+        "minecraft:entity": {
+            "type": "object",
+            "properties": {
+                "description": {
+                    "type": "object",
+                    "properties": {
+
+                    }
+                },
+                "component_groups": {
+                    "type": "object"
+                },
+                "components": {
+                    "type": "object"
+                },
+                "events": {
+                    "allOf": [
+                        { "$ref": "https://raw.githubusercontent.com/BlueFrog130/minecraft-add-on-schemas/master/types/built-in_events.schema.json" },
+                        { 
+                            "patternProperties": {
+                                "^[\\w\\-]+$": {
+                                    "$ref": "https://raw.githubusercontent.com/BlueFrog130/minecraft-add-on-schemas/master/types/events.schema.json"
+                                }
+                            },
+                            "additionalProperties": false
+                        }
+                    ]
+                }
+            }
+        }
+    },
+    "required": ["minecraft:entity"]
+}
