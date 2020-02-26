@@ -24,7 +24,7 @@
                 },
                 "events": {
                     "allOf": [
-                        { "$ref": "https://raw.githubusercontent.com/BlueFrog130/minecraft-add-on-schemas/master/types/built-in_events.schema.json" },
+                        { "$ref": "https://raw.githubusercontent.com/BlueFrog130/minecraft-add-on-schemas/master/entities/built-in_events.schema.json" },
                         { 
                             "patternProperties": {
                                 "^[\\w\\-]+$": {
