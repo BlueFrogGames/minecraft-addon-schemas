@@ -27,7 +27,7 @@
                         { "$ref": "https://raw.githubusercontent.com/BlueFrog130/minecraft-add-on-schemas/master/entities/built-in_events.schema.json" },
                         { 
                             "patternProperties": {
-                                "^[\\w\\-]+$": {
+                                "^.+$": {
                                     "$ref": "https://raw.githubusercontent.com/BlueFrog130/minecraft-add-on-schemas/master/types/event.schema.json"
                                 }
                             },
