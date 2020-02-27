@@ -1,7 +1,7 @@
 {
     "$schema": "http://json-schema.org/draft/2019-09/schema#",
     "title": "Filters",
-    "type": "object",
+    "additionalProperties": "false",
     "allOf": [
         { "$ref": "#/definitions/filter" },
         {
@@ -12,14 +12,22 @@
                         "type": "object",
                         "$ref": "#/definitions/filter"
                     }
-                },
+                }
+            }
+        },
+        {
+            "properties": {
                 "any_of": {
                     "type": "array",
                     "items": {
                         "type": "object",
                         "$ref": "#/definitions/filter"
                     }
-                },
+                }
+            }
+        },
+        {
+            "properties": {
                 "none_of": {
                     "type": "array",
                     "items": {
@@ -30,9 +38,14 @@
             }
         }
     ],
+    "if": {
+        "required": ["test"]
+    },
+    "then": {
+        "not": { "required": ["any_of", "none_of", "all_of"] }
+    },
     "definitions": {
         "filter": {
-            "type": "object",
             "properties": {
                 "test": {
                     "type": "string",
@@ -93,10 +106,7 @@
                         "rider_count",
                         "trusts"
                     ]
-                },
-                "subject": {},
-                "operator": {},
-                "value": {}
+                }
             },
             "allOf": [
                 {
