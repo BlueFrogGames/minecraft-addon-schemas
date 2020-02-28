@@ -5,12 +5,12 @@
     "type": "object",
     "properties": {
         "event": {
-            "type": "string",
-            "description": "Name of entity event to fire"
+            "description": "Name of entity event to fire",
+            "type": "string"
         },
         "target": {
-            "enum": ["self"],
-            "description": "Entity Target"
+            "description": "Entity Target",
+            "$ref": "https://raw.githubusercontent.com/BlueFrog130/minecraft-add-on-schemas/master/constants/targets.schema.json"
         }
     }
 }
