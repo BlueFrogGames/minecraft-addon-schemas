@@ -1,16 +1,19 @@
 {
     "$schema": "http://json-schema.org/draft/2019-09/schema#",
-    "title": "Trigger",
-    "description": "Event and target to trigger",
     "type": "object",
     "properties": {
         "event": {
-            "description": "Name of entity event to fire",
-            "type": "string"
+            "description": "The event to run when the conditions for this trigger are met",
+            "$ref": "https://raw.githubusercontent.com/BlueFrog130/minecraft-add-on-schemas/master/constants/events.schema.json"
         },
         "target": {
-            "description": "Entity Target",
+            "description": "The target of the event",
+            "default": "self",
             "$ref": "https://raw.githubusercontent.com/BlueFrog130/minecraft-add-on-schemas/master/constants/targets.schema.json"
+        },
+        "filters": {
+            "description": "The list of conditions for this trigger",
+            "$ref": "https://raw.githubusercontent.com/BlueFrog130/minecraft-add-on-schemas/master/types/filters.schema.json"
         }
     }
 }
