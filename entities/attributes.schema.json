@@ -17,8 +17,7 @@
                 },
                 "effect_name": {
                     "description": "Identifier of the status ailment to apply to an entity attacked by this entity's melee attack",
-                    "type": "string",
-                    "enum": ["speed","slowness","haste","mining_fatigue","strength","instant_health","instant_damage","jump_boost","nausea","regeneration","resistance","fire_resistance","water_breathing","invisibility","blindness","night_vision","hunger","weakness","poison","wither","health_boost","absorption","saturation","levitation","fatal_poison","conduit_power","slow_falling","bad_omen","village_hero"]
+                    "$refs": "https://raw.githubusercontent.com/BlueFrog130/minecraft-add-on-schemas/master/constants/effects.shcema.json"
                 }
             }
         },
@@ -35,8 +34,15 @@
                 },
                 "remove_effects": {
                     "description": "List of identifiers of effects to be removed from this entity after adding this component",
-                    "type": "string",
-                    "enum": ["speed","slowness","haste","mining_fatigue","strength","instant_health","instant_damage","jump_boost","nausea","regeneration","resistance","fire_resistance","water_breathing","invisibility","blindness","night_vision","hunger","weakness","poison","wither","health_boost","absorption","saturation","levitation","fatal_poison","conduit_power","slow_falling","bad_omen","village_hero"]
+                    "oneOf": [
+                        {
+                            "$refs": "https://raw.githubusercontent.com/BlueFrog130/minecraft-add-on-schemas/master/constants/effects.shcema.json"
+                        },
+                        {
+                            "type": "array",
+                            "$refs": "https://raw.githubusercontent.com/BlueFrog130/minecraft-add-on-schemas/master/constants/effects.shcema.json"
+                        }
+                    ]
                 }
             }
         },

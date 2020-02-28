@@ -3,9 +3,19 @@
     "type": "object",
     "title": "Server Entity",
     "description": "Behavior pack entity definition",
+    "definitions": {
+        "components": {
+            "allOf": [
+                { "$ref": "https://raw.githubusercontent.com/BlueFrog130/minecraft-add-on-schemas/master/entities/ai_goals.schema.json" },
+                { "$ref": "https://raw.githubusercontent.com/BlueFrog130/minecraft-add-on-schemas/master/entities/attributes.schema.json" },
+                { "$ref": "https://raw.githubusercontent.com/BlueFrog130/minecraft-add-on-schemas/master/entities/components.schema.json" }
+            ]
+        }
+    },
     "properties": {
         "format_version": {
-            "type": "string"
+            "type": "string",
+            "default": "1.8.0"
         },
         "minecraft:entity": {
             "type": "object",
@@ -35,13 +45,13 @@
                     "type": "object",
                     "patternProperties": {
                         "^.*$": {
-                            "$ref": "https://raw.githubusercontent.com/BlueFrog130/minecraft-add-on-schemas/master/entities/components.schema.json"
+                            "$ref": "#/definitions/components"
                         }
-                    }
+                    },
+                    "additionalProperties": false
                 },
                 "components": {
-                    "type": "object",
-                    "$ref": "https://raw.githubusercontent.com/BlueFrog130/minecraft-add-on-schemas/master/entities/components.schema.json"
+                    "$ref": "#/definitions/components"
                 },
                 "events": {
                     "type": "object",
@@ -49,7 +59,7 @@
                         { "$ref": "https://raw.githubusercontent.com/BlueFrog130/minecraft-add-on-schemas/master/entities/built-in_events.schema.json" },
                         {
                             "patternProperties": {
-                                "^.+$": {
+                                "^.*$": {
                                     "$ref": "https://raw.githubusercontent.com/BlueFrog130/minecraft-add-on-schemas/master/types/event.schema.json"
                                 }
                             },

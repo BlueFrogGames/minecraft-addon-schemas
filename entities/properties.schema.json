@@ -1,0 +1,351 @@
+{
+    "$schema": "http://json-schema.org/draft/2019-09/schema#",
+    "type": "object",
+    "properties": {
+        "minecraft:ambient_sound_interval": {
+            "type": "object",
+            "description": "Sets the entity's delay between playing its ambient sound.",
+            "properties": {
+                "event_name": {
+                    "description": "Level sound event to be played as the ambient sound.\nDefault: ambient",
+                    "default": "ambient",
+                    "$ref": "https://raw.githubusercontent.com/BlueFrog130/minecraft-add-on-schemas/master/constants/sounds.schema.json"
+                },
+                "range": {
+                    "description": "Maximum time in seconds to randomly add to the ambient sound delay time.\nDefault: 16.000000",
+                    "default": 16.000000,
+                    "type": "number"
+                },
+                "value": {
+                    "description": "Minimum time in seconds before the entity plays its ambient sound again\nDefault: 8.000000",
+                    "default": 8.000000,
+                    "type": "number"
+                }
+            }
+        },
+        "minecraft:can_climb": {
+            "description": "Allows this entity to climb up ladders.",
+            "type": "object"
+        },
+        "minecraft:can_fly": {
+            "description": "Marks the entity as being able to fly, the pathfinder won't be restricted to paths where a solid block is required underneath it.",
+            "type": "object"
+        },
+        "minecraft:can_power_jump": {
+            "description": "Allows the entity to power jump like the horse does in vanilla.",
+            "type": "object"
+        },
+        "minecraft:collision_box": {
+            "type": "object",
+            "description": "Sets the width and height of the Entity's collision box.",
+            "properties": {
+                "height": {
+                    "description": "Height of the collision box in blocks. A negative value will be assumed to be 0\nDefault: 1.0",
+                    "default": 1.0,
+                    "type": "number"
+                },
+                "width": {
+                    "description": "Width and Depth of the collision box in blocks. A negative value will be assumed to be 0\nDefault: 1.0",
+                    "default": 1.0,
+                    "type": "number"
+                }
+            }
+        },
+        "minecraft:color": {
+            "type": "object",
+            "description": "Defines the entity's color. Only works on vanilla entities that have predefined color values (sheep, llama, shulker).",
+            "properties": {
+                "value": {
+                    "description": "The Palette Color value of the entity\nDefault: 0",
+                    "default": 0,
+                    "type": "integer"
+                }
+            }
+        },
+        "minecraft:color2": {
+            "type": "object",
+            "description": "Defines the entity's second texture color. Only works on vanilla entities that have a second predefined color values (tropical fish).",
+            "properties": {
+                "value": {
+                    "description": "The second Palette Color value of the entity\nDefault: 0",
+                    "default": 0,
+                    "type": "integer"
+                }
+            }
+        },
+        "minecraft:default_look_angle": {
+            "type": "object",
+            "description": "Sets this entity's default head rotation angle.",
+            "properties": {
+                "value": {
+                    "description": "Angle in degrees\nDefault: 0.0",
+                    "default": 0.0,
+                    "type": "number"
+                }
+            }
+        },
+        "minecraft:equipment": {
+            "type": "object",
+            "description": "Sets the Equipment table to use for this Entity.",
+            "properties": {
+                "slot_drop_chance": {
+                    "description": "A list of slots with the chance to drop an equipped item from that slot",
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "slot": {
+                                "$ref": "https://raw.githubusercontent.com/BlueFrog130/minecraft-add-on-schemas/master/constants/slots.schema.json"
+                            },
+                            "drop_chance": {
+                                "type": "integer"
+                            }
+                        }
+                    }
+                },
+                "table": {
+                    "description": "The file path to the equipment table, relative to the behavior pack's root",
+                    "type": "string"
+                }
+            }
+        },
+        "minecraft:fire_immune": {
+            "description": "Sets that this entity doesn't take damage from fire.",
+            "type": "boolean"
+        },
+        "minecraft:floats_in_liquid": {
+            "description": "Sets that this entity can float in liquid blocks.",
+            "type": "boolean"
+        },
+        "minecraft:flying_speed": {
+            "type": "object",
+            "description": "Speed in Blocks that this entity flies at.",
+            "properties": {
+                "value": {
+                    "description": "Flying speed in blocks per tick\nDefault: 0.02",
+                    "default": 0.02,
+                    "type": "number"
+                }
+            }
+        },
+        "minecraft:foot_size": {
+            "type": "object",
+            "description": "Sets the number of blocks the entity can step without jumping.",
+            "properties": {
+                "value": {
+                    "description": "The value of the size of the entity's step\nDefault: 0.5",
+                    "default": 0.5,
+                    "type": "number"
+                }
+            }
+        },
+        "minecraft:friction_modifier": {
+            "type": "object",
+            "description": "Defines how much does friction affect this entity.",
+            "properties": {
+                "value": {
+                    "description": "The higher the number, the more the friction affects this entity. A value of 1.0 means regular friction, while 2.0 means twice as much\nDefault: 1.0",
+                    "default": 1.0,
+                    "type": "number"
+                }
+            }
+        },
+        "minecraft:ground_offset": {
+            "type": "object",
+            "description": "Sets the offset from the ground that the entity is actually at.",
+            "properties": {
+                "value": {
+                    "description": "The value of the entity's offset from the terrain, in blocks\nDefault: 0.0",
+                    "default": 0.0,
+                    "type": "number"
+                }
+            }
+        },
+        "minecraft:input_ground_controlled": {
+            "description": "When configured as a rideable entity, the entity will be controlled using WASD controls.",
+            "type": "object"
+        },
+        "minecraft:is_baby": {
+            "description": "Sets that this entity is a baby.",
+            "type": "object"
+        },
+        "minecraft:is_charged": {
+            "description": "Sets that this entity is charged.",
+            "type": "object"
+        },
+        "minecraft:is_chested": {
+            "description": "Sets that this entity is currently carrying a chest.",
+            "type": "object"
+        },
+        "minecraft:is_dyeable": {
+            "type": "object",
+            "description": "Allows dyes to be used on this entity to change its color.",
+            "properties": {
+                "interact_text": {
+                    "description": "The text that will display when interacting with this entity with a dye when playing with Touch-screen controls",
+                    "type": "string"
+                }
+            }
+        },
+        "minecraft:is_hidden_when_invisible": {
+            "description": "Sets that this entity can hide from hostile mobs while invisible.",
+            "type": "object"
+        },
+        "minecraft:is_ignited": {
+            "description": "Sets that this entity is currently on fire.",
+            "type": "object"
+        },
+        "minecraft:is_illager_captain": {
+            "description": "Sets that this entity is an illager captain.",
+            "type": "object"
+        },
+        "minecraft:is_saddled": {
+            "description": "Sets that this entity is currently saddled.",
+            "type": "object"
+        },
+        "minecraft:is_shaking": {
+            "description": "Sets that this entity is currently shaking.",
+            "type": "object"
+        },
+        "minecraft:is_sheared": {
+            "description": "Sets that this entity is currently sheared.",
+            "type": "object"
+        },
+        "minecraft:is_stackable": {
+            "description": "Sets that this entity can be stacked.",
+            "type": "object"
+        },
+        "minecraft:is_stunned": {
+            "description": "Sets that this entity is currently stunned.",
+            "type": "object"
+        },
+        "minecraft:is_tamed": {
+            "description": "Sets that this entity is currently tamed.",
+            "type": "object"
+        },
+        "minecraft:item_controllable": {
+            "type": "object",
+            "description": "Defines what items can be used to control this entity while ridden",
+            "properties": {
+                "control_items": {
+                    "description": "List of items that can be used to control this entity",
+                    "oneOf": [
+                        {
+                            "type": "array",
+                            "items": {
+                                "$ref": "https://raw.githubusercontent.com/BlueFrog130/minecraft-add-on-schemas/master/constants/items.schema.json"
+                            }
+                        },
+                        {
+                            "$ref": "https://raw.githubusercontent.com/BlueFrog130/minecraft-add-on-schemas/master/constants/items.schema.json"
+                        }
+                    ]
+                }
+            }
+        },
+        "minecraft:loot": {
+            "type": "object",
+            "description": "Sets the loot table for what items this entity drops upon death.",
+            "properties": {
+                "table": {
+                    "description": "The path to the loot table, relative to the Behavior Pack's root",
+                    "type": "string"
+                }
+            }
+        },
+        "minecraft:mark_variant": {
+            "type": "object",
+            "description": "Additional variant value. Can be used to further differentiate variants.",
+            "properties": {
+                "value": {
+                    "description": "The ID of the variant. By convention, 0 is the ID of the base entity\nDefault: 0",
+                    "default": 0,
+                    "type": "integer"
+                }
+            }
+        },
+        "minecraft:push_through": {
+            "type": "object",
+            "description": "Sets the distance through which the entity can push through.",
+            "properties": {
+                "value": {
+                    "description": "The value of the entity's push-through, in blocks\nDefault: 0.0",
+                    "default": 0.0,
+                    "type": "number"
+                }
+            }
+        },
+        "minecraft:scale": {
+            "type": "object",
+            "description": "Sets the entity's visual size.",
+            "properties": {
+                "value": {
+                    "description": "The value of the scale. 1.0 means the entity will appear at the scale they are defined in their model. Higher numbers make the entity bigger\nDefault: 1.0",
+                    "default": 1.0,
+                    "type": "number"
+                }
+            }
+        },
+        "minecraft:skin_id": {
+            "type": "object",
+            "description": "Skin ID value. Can be used to differentiate skins, such as base skins for villagers.",
+            "properties": {
+                "value": {
+                    "description": "The ID of the skin. By convention, 0 is the ID of the base skin\nDefault: 0",
+                    "default": 0,
+                    "type": "integer"
+                }
+            }
+        },
+        "minecraft:sound_volume": {
+            "type": "object",
+            "description": "Sets the entity's base volume for sound effects.",
+            "properties": {
+                "value": {
+                    "description": "The value of the volume the entity uses for sound effects\nDefault: 1.0",
+                    "default": 1.0,
+                    "type": "number"
+                }
+            }
+        },
+        "minecraft:type_family": {
+            "type": "object",
+            "description": "Defines the families this entity belongs to.",
+            "properties": {
+                "family": {
+                    "description": "List of family names",
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        "minecraft:variant": {
+            "type": "object",
+            "description": "Used to differentiate the component group of a variant of an entity from others (e.g. ocelot, villager)",
+            "properties": {
+                "value": {
+                    "description": "The ID of the variant. By convention, 0 is the ID of the base entity\nDefault: 0",
+                    "default": 0,
+                    "type": "integer"
+                }
+            }
+        },
+        "minecraft:walk_animation_speed": {
+            "type": "object",
+            "description": "Sets the speed multiplier for this entity's walk animation speed.",
+            "properties": {
+                "value": {
+                    "description": "The higher the number, the faster the animation for walking plays. A value of 1.0 means normal speed, while 2.0 means twice as fast\nDefault: 1.0",
+                    "default": 1.0,
+                    "type": "number"
+                }
+            }
+        },
+        "minecraft:wants_jockey": {
+            "description": "Sets that this entity wants to become a jockey.",
+            "type": "object"
+        }
+    }
+}
