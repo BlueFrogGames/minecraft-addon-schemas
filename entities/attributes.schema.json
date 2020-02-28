@@ -1,6 +1,5 @@
 {
     "$schema": "http://json-schema.org/draft/2019-09/schema#",
-    "title": "Server Entity Documentation",
     "type": "object",
     "properties": {
         "minecraft:attack": {
