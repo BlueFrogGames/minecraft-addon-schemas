@@ -1,0 +1,7 @@
+{
+    "$schema": "http://json-schema.org/draft/2019-09/schema",
+    "type": "integer",
+    "minimum": 0,
+    "maximum": 41,
+    "oneOf": [{"description":"Water Bottle","enum":[0]},{"description":"Mundane Potion","enum":[1,2]},{"description":"Thick Potion","enum":[3]},{"description":"Awkward Potion","enum":[4]},{"description":"Potion of Night Vision","enum":[5,6]},{"description":"Potion of Invisibility","enum":[7,8]},{"description":"Potion of Leaping","enum":[9,10,11]},{"description":"Potion of Fire Resistance","enum":[12,13]},{"description":"Potion of Swiftness","enum":[14,15,16]},{"description":"Potion of Slowness","enum":[17,18]},{"description":"Potion of Water Breathing","enum":[19,20]},{"description":"Potion of Healing","enum":[21,22]},{"description":"Potion of Harming","enum":[23,24]},{"description":"Potion of Poison","enum":[25,26,27]},{"description":"Potion of Regeneration","enum":[28,29,30]},{"description":"Potion of Strength","enum":[31,32,33]},{"description":"Potion of Weakness","enum":[34,35]},{"description":"Potion of Decay","enum":[36]},{"description":"Potion of the Turtle Master","enum":[37,38,39]},{"description":"Potion of Slow Falling","enum":[40,41]}]
+}
