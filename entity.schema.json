@@ -3,7 +3,6 @@
     "type": "object",
     "title": "Server Entity",
     "description": "Behavior pack entity definition",
-    "additionalProperties": false,
     "definitions": {
         "components": {
             "allOf": [
