@@ -13,7 +13,7 @@ These steps are for [Visual Studio Code](https://code.visualstudio.com/)
         {
             "fileMatch": [
                 "/*.behavior.json",
-                "entities/**/*"
+                "entities/*"
             ],
             "url": "https://raw.githubusercontent.com/BlueFrog130/minecraft-add-on-schemas/master/entity.schema.json"
         }
