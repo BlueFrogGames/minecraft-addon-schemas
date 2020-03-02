@@ -19,4 +19,4 @@ These steps are for [Visual Studio Code](https://code.visualstudio.com/)
         }
     ]
 ```
-  The `"fileMatch"` option checks the schema against any files ending in `".behavior.json"` or any file within the `/entities/` directory
+  The `"fileMatch"` option checks the schema against any files ending in `".behavior.json"` or any file within the `entities/` directory
