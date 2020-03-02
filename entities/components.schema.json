@@ -84,6 +84,36 @@
                     "type": "string"
                 }
             }
+        },
+        "seats": {
+            "type": "object",
+            "properties": {
+                "lock_rider_rotation": {
+                    "description": "Angle in degrees that a rider is allowed to rotate while riding this entity. Omit this property for no limit\nDefault: 181.0",
+                    "default": 181.0,
+                    "type": "number"
+                },
+                "max_rider_count": {
+                    "description": "Defines the maximum number of riders that can be riding this entity for this seat to be valid\nDefault: 0",
+                    "default": 0,
+                    "type": "integer"
+                },
+                "min_rider_count": {
+                    "description": "Defines the minimum number of riders that need to be riding this entity before this seat can be used\nDefault: 0",
+                    "default": 0,
+                    "type": "integer"
+                },
+                "position": {
+                    "description": "Position of this seat relative to this entity's position\nDefault: [0.0, 0.0, 0.0]",
+                    "default": [0.0, 0.0, 0.0],
+                    "$ref": "https://raw.githubusercontent.com/BlueFrog130/minecraft-add-on-schemas/master/types/vector.schema.json"
+                },
+                "rotate_rider_by": {
+                    "description": "Offset to rotate riders by\nDefault: 0.0",
+                    "default": 0.0,
+                    "type": "number"
+                }
+            }
         }
     },
     "properties": {
@@ -492,7 +522,7 @@
             }
         },
         "minecraft:burns_in_daylight": {
-            "type": "object",
+            "type": ["object", "boolean"],
             "description": "Specifies if/how a mob burns in daylight."
         },
         "minecraft:damage_over_time": {
@@ -979,19 +1009,24 @@
             "description": "Saves a home pos for when the the entity is spawned."
         },
         "minecraft:hurt_on_condition": {
-            "type": "array",
-            "description": "Defines a set of conditions under which an entity should take damage.",
-            "items": {
-                "type": "object",
-                "properties": {
-                    "filters": {
-                        "$ref": "https://raw.githubusercontent.com/BlueFrog130/minecraft-add-on-schemas/master/types/filters.schema.json"
-                    },
-                    "cause": {
-                        "type": "string"
-                    },
-                    "damage_per_tick": {
-                        "type": "number"
+            "type": "object",
+            "properties": {
+                "damage_conditions": {
+                    "type": "array",
+                    "description": "Defines a set of conditions under which an entity should take damage.",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "filters": {
+                                "$ref": "https://raw.githubusercontent.com/BlueFrog130/minecraft-add-on-schemas/master/types/filters.schema.json"
+                            },
+                            "cause": {
+                                "type": "string"
+                            },
+                            "damage_per_tick": {
+                                "type": "number"
+                            }
+                        }
                     }
                 }
             }
@@ -2326,37 +2361,15 @@
                 },
                 "seats": {
                     "description": "The list of positions and number of riders for each position for entities riding this entity",
-                    "type": "array",
-                    "items": {
-                        "type": "object",
-                        "properties": {
-                            "lock_rider_rotation": {
-                                "description": "Angle in degrees that a rider is allowed to rotate while riding this entity. Omit this property for no limit\nDefault: 181.0",
-                                "default": 181.0,
-                                "type": "number"
-                            },
-                            "max_rider_count": {
-                                "description": "Defines the maximum number of riders that can be riding this entity for this seat to be valid\nDefault: 0",
-                                "default": 0,
-                                "type": "integer"
-                            },
-                            "min_rider_count": {
-                                "description": "Defines the minimum number of riders that need to be riding this entity before this seat can be used\nDefault: 0",
-                                "default": 0,
-                                "type": "integer"
-                            },
-                            "position": {
-                                "description": "Position of this seat relative to this entity's position\nDefault: [0.0, 0.0, 0.0]",
-                                "default": [0.0, 0.0, 0.0],
-                                "$ref": "https://raw.githubusercontent.com/BlueFrog130/minecraft-add-on-schemas/master/types/vector.schema.json"
-                            },
-                            "rotate_rider_by": {
-                                "description": "Offset to rotate riders by\nDefault: 0.0",
-                                "default": 0.0,
-                                "type": "number"
-                            }
+                    "oneOf": [
+                        {
+                            "$ref": "#/definitions/seats"
+                        },
+                        {
+                            "type": "array",
+                            "items": { "$ref": "#/definitions/seats" }
                         }
-                    }
+                    ]
                 }
             }
         },
@@ -2791,7 +2804,10 @@
                 "time": {
                     "description": "Amount of time in seconds for the timer. Can be specified as a number or a pair of numbers (min and max). Incompatible with random_time_choices.\nDefault: [0.0, 0.0]",
                     "default": [0.0, 0.0],
-                    "$ref": "https://raw.githubusercontent.com/BlueFrog130/minecraft-add-on-schemas/master/types/range.schema.json"
+                    "oneOf": [
+                        { "$ref": "https://raw.githubusercontent.com/BlueFrog130/minecraft-add-on-schemas/master/types/range.schema.json" },
+                        { "type": "number" }
+                    ]
                 },
                 "time_down_event": {
                     "description": "Event to fire when the time on the timer runs out",

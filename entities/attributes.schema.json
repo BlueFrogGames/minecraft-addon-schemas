@@ -8,7 +8,10 @@
             "properties": {
                 "damage": {
                     "description": "Range of the random amount of damage the melee attack deals. A negative value can heal the entity instead of hurting it",
-                    "$ref": "https://raw.githubusercontent.com/BlueFrog130/minecraft-add-on-schemas/master/types/range.schema.json"
+                    "oneOf": [
+                        { "$ref": "https://raw.githubusercontent.com/BlueFrog130/minecraft-add-on-schemas/master/types/range.schema.json" },
+                        { "type": "number" }
+                    ]
                 },
                 "effect_duration": {
                     "description": "Duration in seconds of the status ailment applied to the damaged entity\nDefault: 0.0",
