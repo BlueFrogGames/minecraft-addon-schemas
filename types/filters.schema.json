@@ -1,6 +1,5 @@
 {
     "$schema": "http://json-schema.org/draft/2019-09/schema#",
-    "title": "Filters",
     "additionalProperties": "false",
     "allOf": [
         { "$ref": "#/definitions/filter" },
@@ -35,6 +34,13 @@
                         "$ref": "#/definitions/filter"
                     }
                 }
+            }
+        },
+        {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "$ref": "#/definitions/filter"
             }
         }
     ],

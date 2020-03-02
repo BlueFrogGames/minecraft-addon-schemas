@@ -81,7 +81,7 @@
                 },
                 "on_named": {
                     "description": "Event to be called when this entity acquires the name specified in 'name_filter'",
-                    "type": "string"
+                    "$ref": "https://raw.githubusercontent.com/BlueFrog130/minecraft-add-on-schemas/master/types/trigger.schema.json"
                 }
             }
         },
@@ -112,6 +112,192 @@
                     "description": "Offset to rotate riders by\nDefault: 0.0",
                     "default": 0.0,
                     "type": "number"
+                }
+            }
+        },
+        "breeds_with": {
+            "type": "object",
+            "properties": {
+                "baby_type": {
+                    "description": "The entity definition of this entity's babies.",
+                    "type": "string"
+                },
+                "breed_event": {
+                    "description": "Event to run when this entity breeds.",
+                    "$ref": "https://raw.githubusercontent.com/BlueFrog130/minecraft-add-on-schemas/master/types/trigger.schema.json"
+                },
+                "mate_type": {
+                    "description": "The entity definition of this entity's mate.",
+                    "type": "string"
+                }
+            }
+        },
+        "on_interact": {
+            "type": "object",
+            "properties": {
+                "filters": {
+                    "type": "object",
+                    "$ref": "https://raw.githubusercontent.com/BlueFrog130/minecraft-add-on-schemas/master/types/filters.schema.json"
+                },
+                "event": {
+                    "$ref": "https://raw.githubusercontent.com/BlueFrog130/minecraft-add-on-schemas/master/constants/events.schema.json"
+                },
+                "target": {
+                    "$ref": "https://raw.githubusercontent.com/BlueFrog130/minecraft-add-on-schemas/master/constants/targets.schema.json"
+                }
+            }
+        },
+        "spawn_entity": {
+            "type": "object",
+            "properties": {
+                "filters": {
+                    "description": "If present, the specified entity will only spawn if the filter evaluates to true",
+                    "$ref": "https://raw.githubusercontent.com/BlueFrog130/minecraft-add-on-schemas/master/types/filters.schema.json"
+                },
+                "max_wait_time": {
+                    "description": "Maximum amount of time to randomly wait in seconds before another entity is spawned\nDefault: 600",
+                    "default": 600,
+                    "type": "integer"
+                },
+                "min_wait_time": {
+                    "description": "Minimum amount of time to randomly wait in seconds before another entity is spawned\nDefault: 300",
+                    "default": 300,
+                    "type": "integer"
+                },
+                "num_to_spawn": {
+                    "description": "The number of entities of this type to spawn each time that this triggers\nDefault: 1",
+                    "default": 1,
+                    "type": "integer"
+                },
+                "should_leash": {
+                    "description": "If true, this the spawned entity will be leashed to the parent\nDefault: false",
+                    "default": false,
+                    "type": "boolean"
+                },
+                "single_use": {
+                    "description": "If true, this component will only ever spawn the specified entity once\nDefault: false",
+                    "default": false,
+                    "type": "boolean"
+                },
+                "spawn_entity": {
+                    "description": "Identifier of the entity to spawn, leave empty to spawn the item defined above instead",
+                    "$ref": "https://raw.githubusercontent.com/BlueFrog130/minecraft-add-on-schemas/master/constants/entities.schema.json"
+                },
+                "spawn_event": {
+                    "description": "Event to call when the entity is spawned\nDefault: minecraft:entity_born",
+                    "default": "minecraft:entity_born",
+                    "$ref": "https://raw.githubusercontent.com/BlueFrog130/minecraft-add-on-schemas/master/constants/events.schema.json"
+                },
+                "spawn_item": {
+                    "description": "Item identifier of the item to spawn\nDefault: egg",
+                    "default": "egg",
+                    "$ref": "https://raw.githubusercontent.com/BlueFrog130/minecraft-add-on-schemas/master/constants/items.schema.json"
+                },
+                "spawn_method": {
+                    "description": "Method to use to spawn the entity\nDefault: born",
+                    "default": "born",
+                    "type": "string"
+                },
+                "spawn_sound": {
+                    "description": "Identifier of the sound effect to play when the entity is spawned\nDefault: plop",
+                    "default": "plop",
+                    "$ref": "https://raw.githubusercontent.com/BlueFrog130/minecraft-add-on-schemas/master/constants/sounds.schema.json"
+                }
+            }
+        },
+        "interactions": {
+            "type": "object",
+            "properties": {
+                "add_items": {
+                    "description": "Loot table with items to add to the player's inventory upon successful interaction.",
+                    "type": "object",
+                    "properties": {
+                        "table": {
+                            "description": "File path, relative to the Behavior Pack's path, to the loot table file.",
+                            "type": "string"
+                        }
+                    }
+                },
+                "cooldown": {
+                    "description": "Time in seconds before this entity can be interacted with again.\nDefault: 0.0",
+                    "default": 0.0,
+                    "type": "number"
+                },
+                "hurt_item": {
+                    "description": "The amount of damage the item will take when used to interact with this entity. A value of 0 means the item won't lose durability.\nDefault: 0",
+                    "default": 0,
+                    "type": "integer"
+                },
+                "interact_text": {
+                    "description": "Text to show when the player is able to interact in this way with this entity when playing with Touch-screen controls.",
+                    "type": "string"
+                },
+                "on_interact": {
+                    "description": "Event to fire when the interaction occurs.",
+                    "oneOf": [
+                        { "$ref": "#/definitions/on_interact" },
+                        {
+                            "type": "array",
+                            "items": { "$ref": "#/definitions/on_interact" }
+                        }
+                    ]
+                },
+                "particle_on_start": {
+                    "description": "Particle effect that will be triggered at the start of the interaction.",
+                    "type": "object",
+                    "properties": {
+                        "particle_offset_towards_interactor": {
+                            "type": "boolean"
+                        },
+                        "particle_type": {
+                            "type": "string"
+                        },
+                        "particle_y_offset": {
+                            "type": "number"
+                        }
+                    }
+                },
+                "play_sounds": {
+                    "description": "List of sounds to play when the interaction occurs.\nBlueFrog's Note: Documentation states 'list', but all examples use single string",
+                    "oneOf": [
+                        {
+                            "type": "array",
+                            "items": {
+                                "$ref": "https://raw.githubusercontent.com/BlueFrog130/minecraft-add-on-schemas/master/constants/sounds.schema.json"
+                            }
+                        },
+                        {
+                            "$ref": "https://raw.githubusercontent.com/BlueFrog130/minecraft-add-on-schemas/master/constants/sounds.schema.json"
+                        }
+                    ]
+                },
+                "spawn_entities": {
+                    "description": "List of entities to spawn when the interaction occurs.",
+                    "type": "string"
+                },
+                "spawn_items": {
+                    "description": "Loot table with items to drop on the ground upon successful interaction.",
+                    "type": "object",
+                    "properties": {
+                        "table": {
+                            "description": "File path, relative to the Behavior Pack's path, to the loot table file.",
+                            "type": "string"
+                        }
+                    }
+                },
+                "swing": {
+                    "description": "If true, the player will do the 'swing' animation when interacting with this entity.\nDefault: false",
+                    "default": false,
+                    "type": "boolean"
+                },
+                "transform_to_item": {
+                    "description": "The item used will transform to this item upon successful interaction. Format: itemName:auxValue",
+                    "type": "string"
+                },
+                "use_item": {
+                    "description": "If true, the interaction will use an item.\nDefault: false",
+                    "default": false,
+                    "type": "boolean"
                 }
             }
         }
@@ -149,14 +335,33 @@
                 },
                 "feed_items": {
                     "description": "List of items that can be fed to the entity. Includes 'item' for the item name and 'growth' to define how much time it grows up by",
-                    "type": "array",
-                    "items": {
-                        "$ref": "https://raw.githubusercontent.com/BlueFrog130/minecraft-add-on-schemas/master/constants/items.schema.json"
-                    }
+                    "oneOf": [
+                        {
+                            "type": "array",
+                            "items": {
+                                "$ref": "https://raw.githubusercontent.com/BlueFrog130/minecraft-add-on-schemas/master/constants/items.schema.json"
+                            }
+                        },
+                        {
+                            "type": "array",
+                            "items": {
+                                "type": "object",
+                                "properties": {
+                                    "item": {
+                                        "$ref": "https://raw.githubusercontent.com/BlueFrog130/minecraft-add-on-schemas/master/constants/items.schema.json"
+                                    },
+                                    "growth": {
+                                        "type": "number"
+                                    }
+                                }
+                            }
+                        },
+                        { "$ref": "https://raw.githubusercontent.com/BlueFrog130/minecraft-add-on-schemas/master/constants/items.schema.json" }
+                    ]
                 },
                 "grow_up": {
                     "description": "Event to run when this entity grows up.",
-                    "type": "string"
+                    "$ref": "https://raw.githubusercontent.com/BlueFrog130/minecraft-add-on-schemas/master/types/trigger.schema.json"
                 }
             }
         },
@@ -184,7 +389,7 @@
                 },
                 "calm_event": {
                     "description": "Event to run after the number of seconds specified in duration expires (when the entity stops being 'angry')",
-                    "type": "string"
+                    "$ref": "https://raw.githubusercontent.com/BlueFrog130/minecraft-add-on-schemas/master/types/trigger.schema.json"
                 },
                 "duration": {
                     "description": "The amount of time in seconds that the entity will be angry\nDefault: 25",
@@ -402,24 +607,15 @@
                 },
                 "breeds_with": {
                     "description": "The list of entity definitions that this entity can breed with.",
-                    "type": "array",
-                    "items": {
-                        "type": "object",
-                        "properties": {
-                            "baby_type": {
-                                "description": "The entity definition of this entity's babies.",
-                                "type": "string"
-                            },
-                            "breed_event": {
-                                "description": "Event to run when this entity breeds.",
-                                "type": "string"
-                            },
-                            "mate_type": {
-                                "description": "The entity definition of this entity's mate.",
-                                "type": "string"
+                    "oneOf": [
+                        { "$ref": "#/definitions/breeds_with" },
+                        {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/breeds_with"
                             }
                         }
-                    }
+                    ]
                 },
                 "causes_pregnancy": {
                     "description": "If true, the entity will become pregnant instead of spawning a baby.\nDefault: false",
@@ -683,15 +879,15 @@
                             },
                             "item": {
                                 "description": "Identifier of the item that can be equipped for this slot.",
-                                "type": "string"
+                                "$ref": "https://raw.githubusercontent.com/BlueFrog130/minecraft-add-on-schemas/master/constants/items.schema.json"
                             },
                             "on_equip": {
                                 "description": "Event to trigger when this entity is equipped with this item.",
-                                "type": "string"
+                                "$ref": "https://raw.githubusercontent.com/BlueFrog130/minecraft-add-on-schemas/master/types/trigger.schema.json"
                             },
                             "on_unequip": {
                                 "description": "Event to trigger when this item is removed from this entity.",
-                                "type": "string"
+                                "$ref": "https://raw.githubusercontent.com/BlueFrog130/minecraft-add-on-schemas/master/types/trigger.schema.json"
                             },
                             "slot": {
                                 "description": "The slot number of this slot.\nDefault: 0",
@@ -745,7 +941,23 @@
                 },
                 "fuse_length": {
                     "description": "The range for the random amount of time the fuse will be lit before exploding, a negative value means the explosion will be immediate.\nDefault: [0.0, 0.0]",
-                    "$ref": "https://raw.githubusercontent.com/BlueFrog130/minecraft-add-on-schemas/master/types/range.schema.json"
+                    "default": 0,
+                    "oneOf": [
+                        { "type": "number" },
+                        { 
+                            "type": "object",
+                            "properties": {
+                                "range_min": {
+                                    "description": "Minimum time",
+                                    "type": "number"
+                                },
+                                "range_max": {
+                                    "description": "Maximum time",
+                                    "type": "number"
+                                }
+                            }
+                        }
+                    ]
                 },
                 "fuse_lit": {
                     "description": "If true, the fuse is already lit when this component is added to the entity.\nDefault: false",
@@ -894,12 +1106,19 @@
                                     "properties": {
                                         "birth_event": {
                                             "description": "Event to run when this mob is created and matches the above allele conditions.",
-                                            "type": "string"
+                                            "$ref": "https://raw.githubusercontent.com/BlueFrog130/minecraft-add-on-schemas/master/types/trigger.schema.json"
                                         },
                                         "both_allele": {
                                             "description": "If this value is non-negative, compare both the mob's main and hidden alleles with this value for a match with both. Can also be a range of integers.\nDefault: -1",
-                                            "default": -1,
-                                            "type": "integer"
+                                            "type": "object",
+                                            "properties": {
+                                                "range_min": {
+                                                    "type": "number"
+                                                },
+                                                "range_max": {
+                                                    "type": "number"
+                                                }
+                                            }
                                         },
                                         "either_allele": {
                                             "description": "If this value is non-negative, compare both the mob's main and hidden alleles with this value for a match with either. Can also be a range of integers.\nDefault: -1",
@@ -1047,109 +1266,13 @@
             "description": "Defines interactions with this entity.",
             "properties": {
                 "interactions": {
-                    "type": "array",
-                    "items": {
-                        "type": "object",
-                        "properties": {
-                            "add_items": {
-                                "description": "Loot table with items to add to the player's inventory upon successful interaction.",
-                                "type": "object",
-                                "properties": {
-                                    "table": {
-                                        "description": "File path, relative to the Behavior Pack's path, to the loot table file.",
-                                        "type": "string"
-                                    }
-                                }
-                            },
-                            "cooldown": {
-                                "description": "Time in seconds before this entity can be interacted with again.\nDefault: 0.0",
-                                "default": 0.0,
-                                "type": "number"
-                            },
-                            "hurt_item": {
-                                "description": "The amount of damage the item will take when used to interact with this entity. A value of 0 means the item won't lose durability.\nDefault: 0",
-                                "default": 0,
-                                "type": "integer"
-                            },
-                            "interact_text": {
-                                "description": "Text to show when the player is able to interact in this way with this entity when playing with Touch-screen controls.",
-                                "type": "string"
-                            },
-                            "on_interact": {
-                                "description": "Event to fire when the interaction occurs.",
-                                "type": "object",
-                                "properties": {
-                                    "filters": {
-                                        "type": "object",
-                                        "$ref": "https://raw.githubusercontent.com/BlueFrog130/minecraft-add-on-schemas/master/types/filters.schema.json"
-                                    },
-                                    "event": {
-                                        "$ref": "https://raw.githubusercontent.com/BlueFrog130/minecraft-add-on-schemas/master/constants/events.schema.json"
-                                    },
-                                    "target": {
-                                        "$ref": "https://raw.githubusercontent.com/BlueFrog130/minecraft-add-on-schemas/master/constants/targets.schema.json"
-                                    }
-                                }
-                            },
-                            "particle_on_start": {
-                                "description": "Particle effect that will be triggered at the start of the interaction.",
-                                "type": "object",
-                                "properties": {
-                                    "particle_offset_towards_interactor": {
-                                        "type": "boolean"
-                                    },
-                                    "particle_type": {
-                                        "type": "string"
-                                    },
-                                    "particle_y_offset": {
-                                        "type": "number"
-                                    }
-                                }
-                            },
-                            "play_sounds": {
-                                "description": "List of sounds to play when the interaction occurs.\nBlueFrog's Note: Documentation states 'list', but all examples use single string",
-                                "oneOf": [
-                                    {
-                                        "type": "array",
-                                        "items": {
-                                            "$ref": "https://raw.githubusercontent.com/BlueFrog130/minecraft-add-on-schemas/master/constants/sounds.schema.json"
-                                        }
-                                    },
-                                    {
-                                        "$ref": "https://raw.githubusercontent.com/BlueFrog130/minecraft-add-on-schemas/master/constants/sounds.schema.json"
-                                    }
-                                ]
-                            },
-                            "spawn_entities": {
-                                "description": "List of entities to spawn when the interaction occurs.",
-                                "type": "string"
-                            },
-                            "spawn_items": {
-                                "description": "Loot table with items to drop on the ground upon successful interaction.",
-                                "type": "object",
-                                "properties": {
-                                    "table": {
-                                        "description": "File path, relative to the Behavior Pack's path, to the loot table file.",
-                                        "type": "string"
-                                    }
-                                }
-                            },
-                            "swing": {
-                                "description": "If true, the player will do the 'swing' animation when interacting with this entity.\nDefault: false",
-                                "default": false,
-                                "type": "boolean"
-                            },
-                            "transform_to_item": {
-                                "description": "The item used will transform to this item upon successful interaction. Format: itemName:auxValue",
-                                "type": "string"
-                            },
-                            "use_item": {
-                                "description": "If true, the interaction will use an item.\nDefault: false",
-                                "default": false,
-                                "type": "boolean"
-                            }
-                        }
-                    }
+                    "oneOf": [
+                        {
+                            "type": "array",
+                            "items": { "$ref": "#/definitions/interactions" }
+                        },
+                        { "$ref": "#/definitions/interactions" }
+                    ]
                 }
             }
         },
@@ -1230,11 +1353,11 @@
                 },
                 "on_leash": {
                     "description": "Event to call when this entity is leashed.",
-                    "type": "string"
+                    "$ref": "https://raw.githubusercontent.com/BlueFrog130/minecraft-add-on-schemas/master/types/trigger.schema.json"
                 },
                 "on_unleash": {
                     "description": "Event to call when this entity is unleashed.",
-                    "type": "string"
+                    "$ref": "https://raw.githubusercontent.com/BlueFrog130/minecraft-add-on-schemas/master/types/trigger.schema.json"
                 },
                 "soft_distance": {
                     "description": "Distance in blocks at which the 'spring' effect starts acting to keep this entity close to the entity that leashed it.\nDefault: 4.0",
@@ -1258,8 +1381,11 @@
                 },
                 "look_cooldown": {
                     "description": "The range for the random amount of time during which the entity is 'cooling down' and won't get angered or look for a target.\nDefault: [0.0, 0.0]",
-                    "default": [0.0, 0.0],
-                    "$ref": "https://raw.githubusercontent.com/BlueFrog130/minecraft-add-on-schemas/master/types/range.schema.json"
+                    "default": 0,
+                    "oneOf": [
+                        { "$ref": "https://raw.githubusercontent.com/BlueFrog130/minecraft-add-on-schemas/master/types/range.schema.json" },
+                        { "type": "number" }
+                    ]
                 },
                 "look_event": {
                     "description": "The event identifier to run when the entities specified in filters look at this entity.",
@@ -1896,7 +2022,10 @@
                             "type": "object",
                             "properties": {
                                 "damage": {
-                                    "$ref": "https://raw.githubusercontent.com/BlueFrog130/minecraft-add-on-schemas/master/types/range.schema.json"
+                                    "oneOf": [
+                                        { "$ref": "https://raw.githubusercontent.com/BlueFrog130/minecraft-add-on-schemas/master/types/range.schema.json" },
+                                        { "type": "number" }
+                                    ]
                                 },
                                 "knockback": {
                                     "type": "boolean",
@@ -2238,7 +2367,7 @@
             "properties": {
                 "triggered_event": {
                     "description": "Event to run we attempt to trigger a raid on the village.",
-                    "$ref": "https://raw.githubusercontent.com/BlueFrog130/minecraft-add-on-schemas/master/constants/events.schema.json"
+                    "$ref": "https://raw.githubusercontent.com/BlueFrog130/minecraft-add-on-schemas/master/types/trigger.schema.json"
                 }
             }
         },
@@ -2274,11 +2403,11 @@
                 },
                 "on_activate": {
                     "description": "Event to call when the rail is activated",
-                    "$ref": "https://raw.githubusercontent.com/BlueFrog130/minecraft-add-on-schemas/master/constants/events.schema.json"
+                    "$ref": "https://raw.githubusercontent.com/BlueFrog130/minecraft-add-on-schemas/master/types/trigger.schema.json"
                 },
                 "on_deactivate": {
                     "description": "Event to call when the rail is deactivated",
-                    "$ref": "https://raw.githubusercontent.com/BlueFrog130/minecraft-add-on-schemas/master/constants/events.schema.json"
+                    "$ref": "https://raw.githubusercontent.com/BlueFrog130/minecraft-add-on-schemas/master/types/trigger.schema.json"
                 },
                 "tick_command_block_on_activate": {
                     "description": "If true, command blocks will start ticking when passing over an activated rail\nDefault: true",
@@ -2312,7 +2441,7 @@
                                 "type": "number"
                             },
                             "value": {
-                                "$ref": "https://raw.githubusercontent.com/BlueFrog130/minecraft-add-on-schemas/master/constants/events.schema.json"
+                                "$ref": "https://raw.githubusercontent.com/BlueFrog130/minecraft-add-on-schemas/master/types/trigger.schema.json"
                             }
                         }
                     }
@@ -2509,63 +2638,16 @@
             }
         },
         "minecraft:spawn_entity": {
-            "type": "object",
             "description": "Adds a timer after which this entity will spawn another entity or item (similar to vanilla's chicken's egg-laying behavior).",
-            "properties": {
-                "filters": {
-                    "description": "If present, the specified entity will only spawn if the filter evaluates to true",
-                    "$ref": "https://raw.githubusercontent.com/BlueFrog130/minecraft-add-on-schemas/master/types/filters.schema.json"
-                },
-                "max_wait_time": {
-                    "description": "Maximum amount of time to randomly wait in seconds before another entity is spawned\nDefault: 600",
-                    "default": 600,
-                    "type": "integer"
-                },
-                "min_wait_time": {
-                    "description": "Minimum amount of time to randomly wait in seconds before another entity is spawned\nDefault: 300",
-                    "default": 300,
-                    "type": "integer"
-                },
-                "num_to_spawn": {
-                    "description": "The number of entities of this type to spawn each time that this triggers\nDefault: 1",
-                    "default": 1,
-                    "type": "integer"
-                },
-                "should_leash": {
-                    "description": "If true, this the spawned entity will be leashed to the parent\nDefault: false",
-                    "default": false,
-                    "type": "boolean"
-                },
-                "single_use": {
-                    "description": "If true, this component will only ever spawn the specified entity once\nDefault: false",
-                    "default": false,
-                    "type": "boolean"
-                },
-                "spawn_entity": {
-                    "description": "Identifier of the entity to spawn, leave empty to spawn the item defined above instead",
-                    "$ref": "https://raw.githubusercontent.com/BlueFrog130/minecraft-add-on-schemas/master/constants/entities.schema.json"
-                },
-                "spawn_event": {
-                    "description": "Event to call when the entity is spawned\nDefault: minecraft:entity_born",
-                    "default": "minecraft:entity_born",
-                    "$ref": "https://raw.githubusercontent.com/BlueFrog130/minecraft-add-on-schemas/master/constants/events.schema.json"
-                },
-                "spawn_item": {
-                    "description": "Item identifier of the item to spawn\nDefault: egg",
-                    "default": "egg",
-                    "$ref": "https://raw.githubusercontent.com/BlueFrog130/minecraft-add-on-schemas/master/constants/items.schema.json"
-                },
-                "spawn_method": {
-                    "description": "Method to use to spawn the entity\nDefault: born",
-                    "default": "born",
-                    "type": "string"
-                },
-                "spawn_sound": {
-                    "description": "Identifier of the sound effect to play when the entity is spawned\nDefault: plop",
-                    "default": "plop",
-                    "$ref": "https://raw.githubusercontent.com/BlueFrog130/minecraft-add-on-schemas/master/constants/sounds.schema.json"
+            "oneOf": [
+                { "$ref": "#/definitions/spawn_entity" },
+                { 
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/spawn_entity"
+                    }
                 }
-            }
+            ]
         },
         "minecraft:strength": {
             "type": "object",
@@ -2598,10 +2680,15 @@
                 },
                 "tame_items": {
                     "description": "The list of items that can be used to tame this entity",
-                    "type": "array",
-                    "items": {
-                        "$ref": "https://raw.githubusercontent.com/BlueFrog130/minecraft-add-on-schemas/master/constants/items.schema.json"
-                    }
+                    "oneOf": [
+                        {
+                            "type": "array",
+                            "items": {
+                                "$ref": "https://raw.githubusercontent.com/BlueFrog130/minecraft-add-on-schemas/master/constants/items.schema.json"
+                            }
+                        },
+                        { "$ref": "https://raw.githubusercontent.com/BlueFrog130/minecraft-add-on-schemas/master/constants/items.schema.json" }
+                    ]
                 }
             }
         },
@@ -2886,7 +2973,7 @@
                 },
                 "delay": {
                     "description": "Defines the properties of the delay for the transformation",
-                    "type": "object",
+                    "type": ["object", "number"],
                     "properties": {
                         "block_assist_chance": {
                             "description": "Chance that the entity will look for nearby blocks that can speed up the transformation. Value must be between 0.0 and 1.0\nDefault: 0.0",
@@ -2984,7 +3071,20 @@
             "type": "object",
             "properties": {
                 "value": {
-                    "type": "number"
+                    "oneOf": [
+                        { "type": "number" },
+                        {
+                            "type": "object",
+                            "properties": {
+                                "range_min": {
+                                    "type": "number"
+                                },
+                                "range_max": {
+                                    "type": "number"
+                                }
+                            }
+                        }
+                    ]
                 },
                 "max": {
                     "type": "number"

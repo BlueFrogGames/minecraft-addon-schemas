@@ -5,7 +5,6 @@
             "type": "string"
         },
         {
-            "type": "string",
             "enum": [
                 "iron_shovel",
                 "iron_pickaxe",

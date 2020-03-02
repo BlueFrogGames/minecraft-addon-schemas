@@ -5,7 +5,6 @@
             "type": "string"
         },
         {
-            "type": "string",
             "enum": [
                 "ambient.weather.thunder",
                 "ambient.weather.lightning.impact",

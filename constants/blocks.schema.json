@@ -5,7 +5,6 @@
             "type": "string"
         },
         {
-            "type": "string",
             "enum": [
                 "air",
                 "stone",

@@ -5,7 +5,6 @@
             "type": "string"
         },
         {
-            "type": "string",
             "enum": ["minecraft:entity_born", "minecraft:entity_spawned", "minecraft:entity_transformed", "minecraft:on_prime"]
         }
     ]

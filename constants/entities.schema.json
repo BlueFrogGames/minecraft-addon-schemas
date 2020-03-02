@@ -5,7 +5,6 @@
             "type": "string"
         },
         {
-            "type": "string",
             "enum": [
                 "minecraft:armor_stand",
                 "minecraft:arrow",
