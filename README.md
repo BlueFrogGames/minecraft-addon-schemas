@@ -1,5 +1,5 @@
 # minecraft-add-on-schemas
-JSON schemas for Minecraft add-on developers
+JSON schemas for Minecraft Bedrock Edition add-on developers
 
 ### Usage
 These steps are for [Visual Studio Code](https://code.visualstudio.com/)
