@@ -8,7 +8,7 @@ These steps are for [Visual Studio Code](https://code.visualstudio.com/)
 1. Create .vscode folder at root of project
 2. Create `settings.json` folder
 3. Add the following:
-```json
+```jsonc
     // Allows comments in JSON files
     "files.associations": {
         "*.json": "jsonc"
