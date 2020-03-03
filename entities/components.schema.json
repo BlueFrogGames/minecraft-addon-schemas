@@ -3068,6 +3068,7 @@
             }
         },
         "minecraft:health": {
+            "description": "Sets health value/range",
             "type": "object",
             "properties": {
                 "value": {
@@ -3082,6 +3083,7 @@
             }
         },
         "minecraft:follow_range": {
+            "description": "Sets follow range",
             "type": "object",
             "properties": {
                 "value": {
@@ -3093,6 +3095,7 @@
             }
         },
         "minecraft:knockback_resistance": {
+            "description": "Sets resistance for knockback (100 for no knockback)",
             "type": "object",
             "properties": {
                 "value": {
@@ -3104,33 +3107,43 @@
             }
         },
         "minecraft:on_death": {
+            "description": "On death event",
             "$ref": "https://raw.githubusercontent.com/BlueFrog130/minecraft-add-on-schemas/master/types/trigger.schema.json"
         },
         "minecraft:on_friendly_anger": {
+            "description": "On anger event",
             "$ref": "https://raw.githubusercontent.com/BlueFrog130/minecraft-add-on-schemas/master/types/trigger.schema.json"
         },
         "minecraft:on_hurt": {
+            "description": "On hurt event",
             "$ref": "https://raw.githubusercontent.com/BlueFrog130/minecraft-add-on-schemas/master/types/trigger.schema.json"
         },
         "minecraft:on_hurt_by_player": {
+            "description": "On hurt by player event",
             "$ref": "https://raw.githubusercontent.com/BlueFrog130/minecraft-add-on-schemas/master/types/trigger.schema.json"
         },
         "minecraft:on_ignite": {
+            "description": "On ignite event",
             "$ref": "https://raw.githubusercontent.com/BlueFrog130/minecraft-add-on-schemas/master/types/trigger.schema.json"
         },
         "minecraft:on_start_landing": {
+            "description": "On landing event",
             "$ref": "https://raw.githubusercontent.com/BlueFrog130/minecraft-add-on-schemas/master/types/trigger.schema.json"
         },
         "minecraft:on_start_takeoff": {
+            "description": "On takeoff event",
             "$ref": "https://raw.githubusercontent.com/BlueFrog130/minecraft-add-on-schemas/master/types/trigger.schema.json"
         },
         "minecraft:on_target_acquired": {
+            "description": "On target acquired event",
             "$ref": "https://raw.githubusercontent.com/BlueFrog130/minecraft-add-on-schemas/master/types/trigger.schema.json"
         },
         "minecraft:on_target_escape": {
+            "description": "On target escape event",
             "$ref": "https://raw.githubusercontent.com/BlueFrog130/minecraft-add-on-schemas/master/types/trigger.schema.json"
         },
         "minecraft:on_wake_with_owner": {
+            "description": "On wake event",
             "$ref": "https://raw.githubusercontent.com/BlueFrog130/minecraft-add-on-schemas/master/types/trigger.schema.json"
         }
     }
