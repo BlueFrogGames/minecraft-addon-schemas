@@ -12,7 +12,7 @@ These steps are for [Visual Studio Code](https://code.visualstudio.com/)
     // Allows comments in JSON files
     "files.associations": {
         "*.json": "jsonc"
-    }
+    },
     "json.schemas": [
         {
             "fileMatch": [
