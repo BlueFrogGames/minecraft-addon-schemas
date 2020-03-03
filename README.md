@@ -9,9 +9,14 @@ These steps are for [Visual Studio Code](https://code.visualstudio.com/)
 2. Create `settings.json` folder
 3. Add the following:
 ```json
+    // Allows comments in JSON files
+    "files.associations": {
+        "*.json": "jsonc"
+    }
     "json.schemas": [
         {
             "fileMatch": [
+                // Entity behavior files
                 "/*.behavior.json",
                 "entities/*.json"
             ],
