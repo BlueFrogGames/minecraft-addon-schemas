@@ -8,7 +8,8 @@
             "allOf": [
                 { "$ref": "https://raw.githubusercontent.com/BlueFrog130/minecraft-add-on-schemas/master/entities/ai_goals.schema.json" },
                 { "$ref": "https://raw.githubusercontent.com/BlueFrog130/minecraft-add-on-schemas/master/entities/attributes.schema.json" },
-                { "$ref": "https://raw.githubusercontent.com/BlueFrog130/minecraft-add-on-schemas/master/entities/components.schema.json" }
+                { "$ref": "https://raw.githubusercontent.com/BlueFrog130/minecraft-add-on-schemas/master/entities/components.schema.json" },
+                { "$ref": "https://raw.githubusercontent.com/BlueFrog130/minecraft-add-on-schemas/master/entities/properties.schema.json" }
             ]
         }
     },
