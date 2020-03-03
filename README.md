@@ -13,6 +13,7 @@ These steps are for [Visual Studio Code](https://code.visualstudio.com/)
     "files.associations": {
         "*.json": "jsonc"
     },
+    // Schema associations
     "json.schemas": [
         {
             "fileMatch": [
