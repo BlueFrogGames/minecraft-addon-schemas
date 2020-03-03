@@ -3073,17 +3073,7 @@
                 "value": {
                     "oneOf": [
                         { "type": "number" },
-                        {
-                            "type": "object",
-                            "properties": {
-                                "range_min": {
-                                    "type": "number"
-                                },
-                                "range_max": {
-                                    "type": "number"
-                                }
-                            }
-                        }
+                        { "$ref": "https://raw.githubusercontent.com/BlueFrog130/minecraft-add-on-schemas/master/types/range.schema.json" }
                     ]
                 },
                 "max": {

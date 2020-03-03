@@ -15,7 +15,9 @@
         "range_min": {
             "type": "number"
         },
-        "range_max": "number"
+        "range_max": {
+            "type": "number"
+        }
     },
     "additionalProperties": false,
     "additionalItems": false
