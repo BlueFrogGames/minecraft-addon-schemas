@@ -4,8 +4,7 @@
     "properties": {
         "effect": {
             "type": "string",
-            "description": "Effect to add to this entity",
-            "enum": ["speed","slowness","haste","mining_fatigue","strength","instant_health","instant_damage","jump_boost","nausea","regeneration","resistance","fire_resistance","water_breathing","invisibility","blindness","night_vision","hunger","weakness","poison","wither","health_boost","absorption","saturation","levitation","fatal_poison","conduit_power","slow_falling","bad_omen","village_hero"]
+            "$ref": "https://raw.githubusercontent.com/BlueFrog130/minecraft-add-on-schemas/master/constants/effects.schema.json"
         },
         "duration": {
             "type": "number",
