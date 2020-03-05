@@ -3,7 +3,7 @@
     "additionalProperties": "false",
     "type": ["array", "object"],
     "default": {},
-    "allOf": [
+    "anyOf": [
         { "$ref": "#/definitions/filter" },
         {
             "properties": {
