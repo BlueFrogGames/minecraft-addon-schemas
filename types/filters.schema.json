@@ -1,11 +1,11 @@
 {
     "$schema": "http://json-schema.org/draft/2019-09/schema#",
     "additionalProperties": "false",
-    "type": ["array", "object"],
     "default": {},
     "anyOf": [
         { "$ref": "#/definitions/filter" },
         {
+            "type": "object",
             "properties": {
                 "all_of": {
                     "type": "array",
@@ -17,6 +17,7 @@
             }
         },
         {
+            "type": "object",
             "properties": {
                 "any_of": {
                     "type": "array",
@@ -28,6 +29,7 @@
             }
         },
         {
+            "type": "object",
             "properties": {
                 "none_of": {
                     "type": "array",
@@ -39,6 +41,7 @@
             }
         },
         {
+            "type": "array",
             "items": {
                 "type": "object",
                 "$ref": "#/definitions/filter"
@@ -53,6 +56,7 @@
     },
     "definitions": {
         "filter": {
+            "type": "object",
             "properties": {
                 "test": {
                     "type": "string",
