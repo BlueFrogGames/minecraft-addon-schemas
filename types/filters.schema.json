@@ -48,12 +48,6 @@
             }
         }
     ],
-    "if": {
-        "required": ["test"]
-    },
-    "then": {
-        "not": { "required": ["any_of", "none_of", "all_of"] }
-    },
     "definitions": {
         "filter": {
             "type": "object",
