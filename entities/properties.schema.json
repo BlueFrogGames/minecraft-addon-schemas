@@ -98,7 +98,7 @@
                                 "$ref": "https://raw.githubusercontent.com/BlueFrog130/minecraft-add-on-schemas/master/constants/slots.schema.json"
                             },
                             "drop_chance": {
-                                "type": "integer"
+                                "type": "number"
                             }
                         }
                     }
@@ -111,7 +111,17 @@
         },
         "minecraft:fire_immune": {
             "description": "Sets that this entity doesn't take damage from fire.",
-            "type": "boolean"
+            "oneOf": [
+                { "type": "boolean" },
+                {
+                    "type": "object",
+                    "properties": {
+                        "value": {
+                            "type": "boolean"
+                        }
+                    }
+                }
+            ]
         },
         "minecraft:floats_in_liquid": {
             "description": "Sets that this entity can float in liquid blocks.",
