@@ -1,5 +1,5 @@
 {
-    "$schema": "http://json-schema.org/draft/2019-09/schema#",
+    "$schema": "http://json-schema.org/draft/2019-09/schema",
     "additionalProperties": "false",
     "default": {},
     "anyOf": [
@@ -2460,8 +2460,12 @@
                                 ]
                             },
                             "value": {
-                                "description": "(Required) The Family name to look for",
-                                "type": "string"
+                                "description": "(Required) The weather name to look for",
+                                "enum": [
+                                    "thunder",
+                                    "rain",
+                                    "clear"
+                                ]
                             }
                         }
                     }
