@@ -18,8 +18,9 @@ These steps are for [Visual Studio Code](https://code.visualstudio.com/)
         {
             "fileMatch": [
                 // Entity behavior files
+                // May change depending on your setup
                 "/*.behavior.json",
-                "entities/*.json"
+                "/behaviors/entities/*.json"
             ],
             "url": "https://raw.githubusercontent.com/BlueFrog130/minecraft-add-on-schemas/master/entity.schema.json"
         }
