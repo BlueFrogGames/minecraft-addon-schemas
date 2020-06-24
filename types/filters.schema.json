@@ -2462,7 +2462,7 @@
                             "value": {
                                 "description": "(Required) The weather name to look for",
                                 "enum": [
-                                    "thunder",
+                                    "thunderstorm",
                                     "rain",
                                     "clear"
                                 ]
