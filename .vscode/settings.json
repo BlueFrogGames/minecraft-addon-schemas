@@ -1,36 +1,23 @@
 {
-    "cSpell.words": [
-        "Despawns",
-        "addrider",
-        "ageable",
-        "boostable",
-        "breedable",
-        "cooldown",
-        "despawn",
-        "despawned",
-        "durationeasy",
-        "durationhard",
-        "durationnormal",
-        "equippable",
-        "flocker",
-        "flockers",
-        "griefing",
-        "iconcrack",
-        "illager",
-        "innner",
-        "interactor",
-        "knockback",
-        "leashable",
-        "lookat",
-        "minecart",
-        "minecraft",
-        "molang",
-        "pathing",
-        "pushable",
-        "shareables",
-        "sittable",
-        "tamemount",
-        "teleporting",
-        "unequip"
+    // Allows comments in JSON files
+    "files.associations": {
+        "*.json": "jsonc"
+    },
+    // Schema associations
+    "json.schemas": [
+        {
+            "fileMatch": [
+                // Entity behavior files
+                "/behaviors/entities/*.json"
+            ],
+            "url": "https://raw.githubusercontent.com/BlueFrog130/minecraft-add-on-schemas/master/entity.schema.json"
+        },
+        {
+            "fileMatch": [
+                // Entity resource files
+                "/resources/entity/*.json"
+            ],
+            "url": "https://raw.githubusercontent.com/BlueFrog130/minecraft-add-on-schemas/master/client_entity.schema.json"
+        }
     ]
 }

@@ -1,0 +1,147 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema",
+    "type": "object",
+    "title": "Client Entity",
+    "description": "Resource pack entity definition",
+    "definitions": {
+        "user-defined": {
+            "type": "object",
+            "patternProperties": {
+                "^.+$": {
+                    "type": "string"
+                }
+            },
+            "additionalProperties": false
+        },
+        "user-defined-default": {
+            "type": "object",
+            "description": "Players must set user defined names for them. These names are used in the Render Controllers JSON. Players can reference materials, textures, and geometry from the vanilla Minecraft Resource Pack or create their own. Custom materials, textures, and geometry should be in the corresponding folder at the root of the Resource Pack.",
+            "properties": {
+                "default": {
+                    "type": "string"
+                }
+            },
+            "patternProperties": {
+                "^.+$": {
+                    "type": "string"
+                }
+            },
+            "additionalProperties": false
+        }
+    },
+    "properties": {
+        "format_version": {
+            "type": "string",
+            "default": "1.16.2"
+        },
+        "minecraft:client_entity": {
+            "type": "object",
+            "properties": {
+                "description": {
+                    "type": "object",
+                    "properties": {
+                        "identifier": {
+                            "description": "identifier of the entity(materials, textures, geometry, etc.) The matching identifier in the Entity Behavior JSON in the Behavior Pack is what gives the entity its behaviors.",
+                            "type": "string"
+                        },
+                        "min_engine_version": {
+                            "description": "engine version for which the top resource pack was built.If a definition's min_engine_version is newer than that pack's engine version then the definition is not parsed.\nMultiple definition files may use the same identifier, in which case only one of those definitions will be loaded. The definition with the same or closest and not greater min_engine_version, as compared to the top resource pack's engine version, will be parsed; all other definitions with the same identifier will not be parsed.\nThis can be useful for continuing to support an older version of an entity, when an older resource pack is used at the top of the resource pack stack, while also supporting a newer version of the entity in all other cases.",
+                            "type": "string",
+                            "default": "1.16.2"
+                        },
+                        "textures": {
+                            "$ref": "#/definitions/user-defined-default"
+                        },
+                        "animations": {
+                            "$ref": "#/definitions/user-defined-default",
+                            "description": "These names are used by the animation controller JSON. Players can reference animations from the vanilla Minecraft Resource Pack or create their own. Custom animations should be in the animation folder at the root of the Resource Pack."
+                        },
+                        "materials": {
+                            "$ref": "#/definitions/user-defined-default"
+                        },
+                        "scripts": {
+                            "type": "object",
+                            "description": "This value than can be used over and over again without the need to constantly recompute the calculations. Scripts currently support pre - animation and scale.More script types will be added later.",
+                            "properties": {
+                                "pre_animation": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "string",
+                                        "description": "MoLang scripts"
+                                    }
+                                },
+                                "scale": {
+                                    "type": "number",
+                                    "default": 1.0
+                                }
+                            }
+                        },
+                        "animation_controllers": {
+                            "description": "Each Controller contains a list of states that play one or more animations. Allows the player to assign names to reference the long names for animation controllers. Names are required and need to be unique from all other names in the animation controllers for that mob. Players can reference animation controllers from the vanilla Minecraft Resource Pack or create their own. Custom animation controllers should be in the animation_controllers folder at the root of the Resource Pack.",
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/user-defined"
+                            }
+                        },
+                        "particle_effects": {
+                            "description": "Keys are required and need to be unique from all other keys in the animation controllers. Players can reference particles from the vanilla Minecraft Resource Pack or create their own. Custom particles should be in the particle folder at the root of the Resource Pack.",
+                            "$ref": "#/definitions/user-defined"
+                        },
+                        "render_controllers": {
+                            "description": "Players can reference Render Controllers from the vanilla Minecraft Resource Pack or create their own. Custom Render Controllers should be in the textures folder at the root of the Resource Pack.",
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
+                        },
+                        "locators": {
+                            "type": "object",
+                            "patternProperties": {
+                                "^.+$": {
+                                    "type": "object",
+                                    "patternProperties": {
+                                        "^.+$": {
+                                            "$ref": "https://raw.githubusercontent.com/BlueFrog130/minecraft-add-on-schemas/master/types/vector.schema.json"
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        "enable_attachables": {
+                            "type": "boolean"
+                        },
+                        "spawn_egg": {
+                            "description": "Example Spawn Egg using hex value",
+                            "type": "object",
+                            "anyOf": [
+                                {
+                                    "properties": {
+                                        "base_color": {
+                                            "type": "string",
+                                            "pattern": "^#(?:[0-9a-fA-F]{3}){1,2}$"
+                                        },
+                                        "overlay_color": {
+                                            "type": "string",
+                                            "pattern": "^#(?:[0-9a-fA-F]{3}){1,2}$"
+                                        }
+                                    }
+                                },
+                                {
+                                    "properties": {
+                                        "texture": {
+                                            "type": "string"
+                                        },
+                                        "texture_index": {
+                                            "type": "integer"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "required": ["minecraft:client_entity", "format_version"]
+}
