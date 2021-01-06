@@ -1,5 +1,5 @@
 {
-    "$schema": "http://json-schema.org/draft/2019-09/schema#",
+    "$schema": "http://json-schema.org/draft-07/schema",
     "anyOf": [
         {
             "type": "string"
@@ -25,9 +25,6 @@
                 "block.bamboo.step",
                 "block.bamboo_sapling.place",
                 "block.bamboo_sapling.break",
-                "block.campfire.crackle",
-                "block.barrel.close",
-                "block.barrel.open",
                 "block.campfire.crackle",
                 "block.barrel.close",
                 "block.barrel.open",

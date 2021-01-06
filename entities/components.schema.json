@@ -1,5 +1,5 @@
 {
-    "$schema": "http://json-schema.org/draft/2019-09/schema#",
+    "$schema": "http://json-schema.org/draft-07/schema",
     "type": "object",
     "$id": "components",
     "definitions": {
@@ -218,6 +218,16 @@
                         }
                     }
                 },
+                "admire": {
+                    "description": "If true the mob will try to activate the admire goal after the interaction",
+                    "type": "boolean",
+                    "default": false
+                },
+                "barter": {
+                    "description": "If true the mob will try to activate the barter goal after the interaction",
+                    "type": "boolean",
+                    "default": false
+                },
                 "cooldown": {
                     "description": "Time in seconds before this entity can be interacted with again.\nDefault: 0.0",
                     "default": 0.0,
@@ -300,6 +310,76 @@
                     "type": "boolean"
                 }
             }
+        },
+        "navigation": {
+            "type": "object",
+            "properties": {
+                "avoid_portals": {
+                    "description": "Tells the pathfinder to avoid portals (like nether portals) when finding a path\nDefault: false",
+                    "default": false,
+                    "type": "boolean"
+                },
+                "avoid_powder_snow": {
+                    "description": "Tells the pathfinder to avoid powder snow blocks when creating a path",
+                    "type": "boolean",
+                    "default": false
+                },
+                "avoid_sun": {
+                    "description": "Whether or not the pathfinder should avoid tiles that are exposed to the sun when creating paths\nDefault: false",
+                    "default": false,
+                    "type": "boolean"
+                },
+                "avoid_water": {
+                    "description": "Tells the pathfinder to avoid water when creating a path\nDefault: false",
+                    "default": false,
+                    "type": "boolean"
+                },
+                "can_break_doors": {
+                    "description": "Tells the pathfinder that it can path through a closed door and break it\nDefault: false",
+                    "default": false,
+                    "type": "boolean"
+                },
+                "can_open_doors": {
+                    "description": "Tells the pathfinder that it can path through a closed door assuming the AI will open the door\nDefault: false",
+                    "default": false,
+                    "type": "boolean"
+                },
+                "can_open_iron_doors": {
+                    "description": "Tells the pathfinder that it can path through a closed iron door assuming the AI will open the door",
+                    "type": "boolean",
+                    "default": false
+                },
+                "can_pass_doors": {
+                    "description": "Whether a path can be created through a door\nDefault: true",
+                    "default": true,
+                    "type": "boolean"
+                },
+                "can_path_from_air": {
+                    "description": "Tells the pathfinder that it can start pathing when in the air\nDefault: false",
+                    "default": false,
+                    "type": "boolean"
+                },
+                "can_path_over_lava": {
+                    "description": "Tells the pathfinder whether or not it can travel on the surface of the lava",
+                    "type": "boolean",
+                    "default": false
+                },
+                "can_path_over_water": {
+                    "description": "Tells the pathfinder whether or not it can travel on the surface of the water\nDefault: false",
+                    "default": false,
+                    "type": "boolean"
+                },
+                "can_sink": {
+                    "description": "Tells the pathfinder whether or not it will be pulled down by gravity while in water\nDefault: true",
+                    "default": true,
+                    "type": "boolean"
+                },
+                "can_walk_in_lava": {
+                    "description": "Tells the pathfinder whether or not it can travel in lava like walking on ground",
+                    "type": "boolean",
+                    "default": false
+                }
+            }
         }
     },
     "properties": {
@@ -369,10 +449,24 @@
             "type": "object",
             "description": "Defines the entity's 'angry' state using a timer.",
             "properties": {
+                "angry_sound": {
+                    "description": "The sound event to play when the mob is angry",
+                    "$ref": "https://raw.githubusercontent.com/BlueFrog130/minecraft-add-on-schemas/master/constants/sounds.schema.json"
+                },
                 "broadcast_anger": {
                     "description": "If true, other entities of the same entity definition within the broadcastRange will also become angry\nDefault: false",
                     "default": false,
                     "type": "boolean"
+                },
+                "broadcast_anger_on_attack": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "If true, other entities of the same entity definition within the broadcast\nRange will also become angry whenever this mob attacks"
+                },
+                "broadcast_anger_on_being_attacked": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "If true, other entities of the same entity definition within the broadcast\nRange will also become angry whenever this mob is attacked"
                 },
                 "broadcast_filters": {
                     "description": "Conditions that make this entry in the list valid",
@@ -442,6 +536,21 @@
                     "description": "How close a hostile entity must be to have the damage applied.\nDefault: 0.2",
                     "default": 0.2,
                     "type": "number"
+                }
+            }
+        },
+        "minecraft:barter": {
+            "description": "Enables the component to drop an item as a barter exchange.",
+            "type": "object",
+            "properties": {
+                "barter_table": {
+                    "type": "string",
+                    "description": "Loot table that's used to drop a random item."
+                },
+                "cooldown_after_being_attacked": {
+                    "type": "integer",
+                    "default": 0,
+                    "description": "Duration, in seconds, for which mob won't barter items if it was hurt"
                 }
             }
         },
@@ -721,6 +830,118 @@
             "type": ["object", "boolean"],
             "description": "Specifies if/how a mob burns in daylight."
         },
+        "minecraft:celebrate_hunt": {
+            "type": "object",
+            "description": "Specifies hunt celebration behaviour.",
+            "properties": {
+                "broadcast": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "If true, celebration will be broadcasted to other entities in the radius."
+                },
+                "celebration_targets": {
+                    "description": "The list of conditions that target of hunt must satisfy to initiate celebration.",
+                    "$ref": "https://raw.githubusercontent.com/BlueFrog130/minecraft-add-on-schemas/master/types/filters.schema.json"
+                },
+                "celebrate_sound": {
+                    "description": "The sound event to play when the mob is celebrating",
+                    "$ref": "https://raw.githubusercontent.com/BlueFrog130/minecraft-add-on-schemas/master/constants/sounds.schema.json"
+                },
+                "duration": {
+                    "type": "integer",
+                    "default": 4,
+                    "description": "Duration, in seconds, of celebration"
+                },
+                "radius": {
+                    "type": "number",
+                    "default": 16,
+                    "description": "If broadcast is enabled, specifies the radius in which it will notify other entities for celebration."
+                },
+                "sound_interval": {
+                    "description": "The range of time in seconds to randomly wait before playing the sound again",
+                    "$ref": "https://raw.githubusercontent.com/BlueFrog130/minecraft-add-on-schemas/master/types/range.schema.json"
+                }
+            }
+        },
+        "minecraft:conditional_bandwidth_optimization": {
+            "description": "Defines the Conditional Spatial Update Bandwidth Optimizations of this entity.",
+            "type": "object",
+            "properties": {
+                "conditional_values": {
+                    "description": "The array containing the conditional bandwidth optimization values.",
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "conditional_values": {
+                                "description": "Conditions that must be met for these optimization values to be used.",
+                                "type": "array",
+                                "$ref": "https://raw.githubusercontent.com/BlueFrog130/minecraft-add-on-schemas/master/types/filters.schema.json"
+                            },
+                            "max_dropped_ticks": {
+                                "description": "In relation to the optimization value, determines the maximum ticks spatial update packets can be not sent.",
+                                "type": "integer",
+                                "default": 0
+                            },
+                            "max_optimized_distance": {
+                                "description": "The maximum distance considered during bandwidth optimizations. Any value below the max is interpolated to find optimization, and any value greater than or equal to this max results in max optimization.",
+                                "type": "number",
+                                "default": 0.0
+                            },
+                            "use_motion_prediction_hints": {
+                                "description": "When set to true, smaller motion packets will be sent during drop packet intervals, resulting in the same amount of packets being sent as without optimizations but with much less data being sent. This should be used when actors are travelling very quickly or teleporting to prevent visual oddities.",
+                                "type": "boolean",
+                                "default": false
+                            }
+                        }
+                    }
+                },
+                "default_values": {
+                    "description": "The object containing the default bandwidth optimization values.",
+                    "type": "object",
+                    "properties": {
+                        "max_dropped_ticks": {
+                            "description": "In relation to the optimization value, determines the maximum ticks spatial update packets can be not sent.",
+                            "type": "integer",
+                            "default": 0
+                        },
+                        "max_optimized_distance": {
+                            "description": "The maximum distance considered during bandwidth optimizations. Any value below the max is interpolated to find optimization, and any value greater than or equal to this max results in max optimization.",
+                            "type": "number",
+                            "default": 0.0
+                        },
+                        "use_motion_prediction_hints": {
+                            "description": "When set to true, smaller motion packets will be sent during drop packet intervals, resulting in the same amount of packets being sent as without optimizations but with much less data being sent. This should be used when actors are travelling very quickly or teleporting to prevent visual oddities.",
+                            "type": "boolean",
+                            "default": false
+                        }
+                    }
+                }
+            }
+        },
+        "minecraft:custom_hit_test": {
+            "description": "List of hitboxes for melee and ranged hits against the entity.",
+            "type": "object",
+            "properties": {
+                "hitboxes": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "width": {
+                                "type": "number"
+                            },
+                            "height": {
+                                "type": "number"
+                            },
+                            "pivot": {
+                                "$ref": "https://raw.githubusercontent.com/BlueFrog130/minecraft-add-on-schemas/master/types/vector.schema.json"
+                            }
+                        }
+                    }
+                }
+            }
+        },
         "minecraft:damage_over_time": {
             "type": "object",
             "description": "Applies defined amount of damage to the entity at specified intervals.",
@@ -855,6 +1076,11 @@
                     ]
                 }
             }
+        },
+        "minecraft:equip_item": {
+            "description": "The entity puts on the desired equipment.",
+            "type": "object",
+            "default": {}
         },
         "minecraft:equippable": {
             "type": "object",
@@ -1562,361 +1788,32 @@
             }
         },
         "minecraft:navigation.climb": {
-            "type": "object",
             "description": "Allows this entity to generate paths that include vertical walls like the vanilla Spiders do.",
-            "properties": {
-                "avoid_portals": {
-                    "description": "Tells the pathfinder to avoid portals (like nether portals) when finding a path\nDefault: false",
-                    "default": false,
-                    "type": "boolean"
-                },
-                "avoid_sun": {
-                    "description": "Whether or not the pathfinder should avoid tiles that are exposed to the sun when creating paths\nDefault: false",
-                    "default": false,
-                    "type": "boolean"
-                },
-                "avoid_water": {
-                    "description": "Tells the pathfinder to avoid water when creating a path\nDefault: false",
-                    "default": false,
-                    "type": "boolean"
-                },
-                "can_break_doors": {
-                    "description": "Tells the pathfinder that it can path through a closed door and break it\nDefault: false",
-                    "default": false,
-                    "type": "boolean"
-                },
-                "can_open_doors": {
-                    "description": "Tells the pathfinder that it can path through a closed door assuming the AI will open the door\nDefault: false",
-                    "default": false,
-                    "type": "boolean"
-                },
-                "can_pass_doors": {
-                    "description": "Whether a path can be created through a door\nDefault: true",
-                    "default": true,
-                    "type": "boolean"
-                },
-                "can_path_from_air": {
-                    "description": "Tells the pathfinder that it can start pathing when in the air\nDefault: false",
-                    "default": false,
-                    "type": "boolean"
-                },
-                "can_path_over_water": {
-                    "description": "Tells the pathfinder whether or not it can travel on the surface of the water\nDefault: false",
-                    "default": false,
-                    "type": "boolean"
-                },
-                "can_sink": {
-                    "description": "Tells the pathfinder whether or not it will be pulled down by gravity while in water\nDefault: true",
-                    "default": true,
-                    "type": "boolean"
-                }
-            }
+            "$ref": "#/definitions/navigation"
         },
         "minecraft:navigation.float": {
-            "type": "object",
             "description": "Allows this entity to generate paths by flying around the air like the regular Ghast.",
-            "properties": {
-                "avoid_portals": {
-                    "description": "Tells the pathfinder to avoid portals (like nether portals) when finding a path\nDefault: false",
-                    "default": false,
-                    "type": "boolean"
-                },
-                "avoid_sun": {
-                    "description": "Whether or not the pathfinder should avoid tiles that are exposed to the sun when creating paths\nDefault: false",
-                    "default": false,
-                    "type": "boolean"
-                },
-                "avoid_water": {
-                    "description": "Tells the pathfinder to avoid water when creating a path\nDefault: false",
-                    "default": false,
-                    "type": "boolean"
-                },
-                "can_break_doors": {
-                    "description": "Tells the pathfinder that it can path through a closed door and break it\nDefault: false",
-                    "default": false,
-                    "type": "boolean"
-                },
-                "can_open_doors": {
-                    "description": "Tells the pathfinder that it can path through a closed door assuming the AI will open the door\nDefault: false",
-                    "default": false,
-                    "type": "boolean"
-                },
-                "can_pass_doors": {
-                    "description": "Whether a path can be created through a door\nDefault: true",
-                    "default": true,
-                    "type": "boolean"
-                },
-                "can_path_from_air": {
-                    "description": "Tells the pathfinder that it can start pathing when in the air\nDefault: false",
-                    "default": false,
-                    "type": "boolean"
-                },
-                "can_path_over_water": {
-                    "description": "Tells the pathfinder whether or not it can travel on the surface of the water\nDefault: false",
-                    "default": false,
-                    "type": "boolean"
-                },
-                "can_sink": {
-                    "description": "Tells the pathfinder whether or not it will be pulled down by gravity while in water\nDefault: true",
-                    "default": true,
-                    "type": "boolean"
-                }
-            }
+            "$ref": "#/definitions/navigation"
         },
         "minecraft:navigation.fly": {
-            "type": "object",
             "description": "Allows this entity to generate paths in the air like the vanilla Parrots do.",
-            "properties": {
-                "avoid_portals": {
-                    "description": "Tells the pathfinder to avoid portals (like nether portals) when finding a path\nDefault: false",
-                    "default": false,
-                    "type": "boolean"
-                },
-                "avoid_sun": {
-                    "description": "Whether or not the pathfinder should avoid tiles that are exposed to the sun when creating paths\nDefault: false",
-                    "default": false,
-                    "type": "boolean"
-                },
-                "avoid_water": {
-                    "description": "Tells the pathfinder to avoid water when creating a path\nDefault: false",
-                    "default": false,
-                    "type": "boolean"
-                },
-                "can_break_doors": {
-                    "description": "Tells the pathfinder that it can path through a closed door and break it\nDefault: false",
-                    "default": false,
-                    "type": "boolean"
-                },
-                "can_open_doors": {
-                    "description": "Tells the pathfinder that it can path through a closed door assuming the AI will open the door\nDefault: false",
-                    "default": false,
-                    "type": "boolean"
-                },
-                "can_pass_doors": {
-                    "description": "Whether a path can be created through a door\nDefault: true",
-                    "default": true,
-                    "type": "boolean"
-                },
-                "can_path_from_air": {
-                    "description": "Tells the pathfinder that it can start pathing when in the air\nDefault: false",
-                    "default": false,
-                    "type": "boolean"
-                },
-                "can_path_over_water": {
-                    "description": "Tells the pathfinder whether or not it can travel on the surface of the water\nDefault: false",
-                    "default": false,
-                    "type": "boolean"
-                },
-                "can_sink": {
-                    "description": "Tells the pathfinder whether or not it will be pulled down by gravity while in water\nDefault: true",
-                    "default": true,
-                    "type": "boolean"
-                }
-            }
+            "$ref": "#/definitions/navigation"
         },
         "minecraft:navigation.generic": {
-            "type": "object",
             "description": "Allows this entity to generate paths by walking, swimming, flying and/or climbing around and jumping up and down a block.",
-            "properties": {
-                "avoid_portals": {
-                    "description": "Tells the pathfinder to avoid portals (like nether portals) when finding a path\nDefault: false",
-                    "default": false,
-                    "type": "boolean"
-                },
-                "avoid_sun": {
-                    "description": "Whether or not the pathfinder should avoid tiles that are exposed to the sun when creating paths\nDefault: false",
-                    "default": false,
-                    "type": "boolean"
-                },
-                "avoid_water": {
-                    "description": "Tells the pathfinder to avoid water when creating a path\nDefault: false",
-                    "default": false,
-                    "type": "boolean"
-                },
-                "can_break_doors": {
-                    "description": "Tells the pathfinder that it can path through a closed door and break it\nDefault: false",
-                    "default": false,
-                    "type": "boolean"
-                },
-                "can_open_doors": {
-                    "description": "Tells the pathfinder that it can path through a closed door assuming the AI will open the door\nDefault: false",
-                    "default": false,
-                    "type": "boolean"
-                },
-                "can_pass_doors": {
-                    "description": "Whether a path can be created through a door\nDefault: true",
-                    "default": true,
-                    "type": "boolean"
-                },
-                "can_path_from_air": {
-                    "description": "Tells the pathfinder that it can start pathing when in the air\nDefault: false",
-                    "default": false,
-                    "type": "boolean"
-                },
-                "can_path_over_water": {
-                    "description": "Tells the pathfinder whether or not it can travel on the surface of the water\nDefault: false",
-                    "default": false,
-                    "type": "boolean"
-                },
-                "can_sink": {
-                    "description": "Tells the pathfinder whether or not it will be pulled down by gravity while in water\nDefault: true",
-                    "default": true,
-                    "type": "boolean"
-                }
-            }
+            "$ref": "#/definitions/navigation"
         },
         "minecraft:navigation.hover": {
-            "type": "object",
             "description": "Allows this entity to generate paths in the air like the vanilla Bees do. Keeps them from falling out of the skies and doing predictive movement.",
-            "properties": {
-                "avoid_portals": {
-                    "description": "Tells the pathfinder to avoid portals (like nether portals) when finding a path\nDefault: false",
-                    "default": false,
-                    "type": "boolean"
-                },
-                "avoid_sun": {
-                    "description": "Whether or not the pathfinder should avoid tiles that are exposed to the sun when creating paths\nDefault: false",
-                    "default": false,
-                    "type": "boolean"
-                },
-                "avoid_water": {
-                    "description": "Tells the pathfinder to avoid water when creating a path\nDefault: false",
-                    "default": false,
-                    "type": "boolean"
-                },
-                "can_break_doors": {
-                    "description": "Tells the pathfinder that it can path through a closed door and break it\nDefault: false",
-                    "default": false,
-                    "type": "boolean"
-                },
-                "can_open_doors": {
-                    "description": "Tells the pathfinder that it can path through a closed door assuming the AI will open the door\nDefault: false",
-                    "default": false,
-                    "type": "boolean"
-                },
-                "can_pass_doors": {
-                    "description": "Whether a path can be created through a door\nDefault: true",
-                    "default": true,
-                    "type": "boolean"
-                },
-                "can_path_from_air": {
-                    "description": "Tells the pathfinder that it can start pathing when in the air\nDefault: false",
-                    "default": false,
-                    "type": "boolean"
-                },
-                "can_path_over_water": {
-                    "description": "Tells the pathfinder whether or not it can travel on the surface of the water\nDefault: false",
-                    "default": false,
-                    "type": "boolean"
-                },
-                "can_sink": {
-                    "description": "Tells the pathfinder whether or not it will be pulled down by gravity while in water\nDefault: true",
-                    "default": true,
-                    "type": "boolean"
-                }
-            }
+            "$ref": "#/definitions/navigation"
         },
         "minecraft:navigation.swim": {
-            "type": "object",
             "description": "Allows this entity to generate paths that include water.",
-            "properties": {
-                "avoid_portals": {
-                    "description": "Tells the pathfinder to avoid portals (like nether portals) when finding a path\nDefault: false",
-                    "default": false,
-                    "type": "boolean"
-                },
-                "avoid_sun": {
-                    "description": "Whether or not the pathfinder should avoid tiles that are exposed to the sun when creating paths\nDefault: false",
-                    "default": false,
-                    "type": "boolean"
-                },
-                "avoid_water": {
-                    "description": "Tells the pathfinder to avoid water when creating a path\nDefault: false",
-                    "default": false,
-                    "type": "boolean"
-                },
-                "can_break_doors": {
-                    "description": "Tells the pathfinder that it can path through a closed door and break it\nDefault: false",
-                    "default": false,
-                    "type": "boolean"
-                },
-                "can_open_doors": {
-                    "description": "Tells the pathfinder that it can path through a closed door assuming the AI will open the door\nDefault: false",
-                    "default": false,
-                    "type": "boolean"
-                },
-                "can_pass_doors": {
-                    "description": "Whether a path can be created through a door\nDefault: true",
-                    "default": true,
-                    "type": "boolean"
-                },
-                "can_path_from_air": {
-                    "description": "Tells the pathfinder that it can start pathing when in the air\nDefault: false",
-                    "default": false,
-                    "type": "boolean"
-                },
-                "can_path_over_water": {
-                    "description": "Tells the pathfinder whether or not it can travel on the surface of the water\nDefault: false",
-                    "default": false,
-                    "type": "boolean"
-                },
-                "can_sink": {
-                    "description": "Tells the pathfinder whether or not it will be pulled down by gravity while in water\nDefault: true",
-                    "default": true,
-                    "type": "boolean"
-                }
-            }
+            "$ref": "#/definitions/navigation"
         },
         "minecraft:navigation.walk": {
-            "type": "object",
             "description": "Allows this entity to generate paths by walking around and jumping up and down a block like regular mobs.",
-            "properties": {
-                "avoid_portals": {
-                    "description": "Tells the pathfinder to avoid portals (like nether portals) when finding a path\nDefault: false",
-                    "default": false,
-                    "type": "boolean"
-                },
-                "avoid_sun": {
-                    "description": "Whether or not the pathfinder should avoid tiles that are exposed to the sun when creating paths\nDefault: false",
-                    "default": false,
-                    "type": "boolean"
-                },
-                "avoid_water": {
-                    "description": "Tells the pathfinder to avoid water when creating a path\nDefault: false",
-                    "default": false,
-                    "type": "boolean"
-                },
-                "can_break_doors": {
-                    "description": "Tells the pathfinder that it can path through a closed door and break it\nDefault: false",
-                    "default": false,
-                    "type": "boolean"
-                },
-                "can_open_doors": {
-                    "description": "Tells the pathfinder that it can path through a closed door assuming the AI will open the door\nDefault: false",
-                    "default": false,
-                    "type": "boolean"
-                },
-                "can_pass_doors": {
-                    "description": "Whether a path can be created through a door\nDefault: true",
-                    "default": true,
-                    "type": "boolean"
-                },
-                "can_path_from_air": {
-                    "description": "Tells the pathfinder that it can start pathing when in the air\nDefault: false",
-                    "default": false,
-                    "type": "boolean"
-                },
-                "can_path_over_water": {
-                    "description": "Tells the pathfinder whether or not it can travel on the surface of the water\nDefault: false",
-                    "default": false,
-                    "type": "boolean"
-                },
-                "can_sink": {
-                    "description": "Tells the pathfinder whether or not it will be pulled down by gravity while in water\nDefault: true",
-                    "default": true,
-                    "type": "boolean"
-                }
-            }
+            "$ref": "#/definitions/navigation"
         },
         "minecraft:peek": {
             "type": "object",
@@ -2579,6 +2476,21 @@
                     "items": {
                         "type": "object",
                         "properties": {
+                            "admire": {
+                                "description": "Mob will admire the item after picking up by looking at it. For this to happen the mob needs to have an Admire component and an Admire goal.",
+                                "type": "boolean",
+                                "default": false
+                            },
+                            "barter": {
+                                "description": "Mob will barter for the item after picking it up. For this to work the mob needs to have a Barter component and a Barter goal.",
+                                "type": "boolean",
+                                "default": false
+                            },
+                            "consume_item": {
+                                "description": "Determines whether the mob will consume the item or not.",
+                                "type": "boolean",
+                                "default": false
+                            },
                             "item": {
                                 "description": "The name of the item.",
                                 "$ref": "https://raw.githubusercontent.com/BlueFrog130/minecraft-add-on-schemas/master/constants/items.schema.json"
@@ -2594,6 +2506,11 @@
                             "surplus_amount": {
                                 "type": "number",
                                 "description": "Number of this item considered extra that the entity wants to share."
+                            },
+                            "stored_in_inventory": {
+                                "description": "Determines whether the mob will try to put the item in its inventory if it has the inventory component and if it can't be equipped.",
+                                "type": "boolean",
+                                "default": false
                             },
                             "max_amount": {
                                 "type": "number",
@@ -2853,8 +2770,8 @@
                     "description": "The area around the entity to tick. Default: 2. Allowed range: 2-6.\nDefault: 2",
                     "default": 2,
                     "type": "integer",
-                    "minimum": "2",
-                    "maximum": "6"
+                    "minimum": 2,
+                    "maximum": 6
                 }
             }
         },

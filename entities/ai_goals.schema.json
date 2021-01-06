@@ -1,5 +1,5 @@
 {
-    "$schema": "http://json-schema.org/draft/2019-09/schema#",
+    "$schema": "http://json-schema.org/draft-07/schema",
     "type": "object",
     "definitions": {
         "entity_types": {
@@ -153,6 +153,14 @@
         "minecraft:behavior.avoid_mob_type": {
             "type": "object",
             "properties": {
+                "avoid_mob_sound": {
+                    "description": "The sound event to play when the mob is angry",
+                    "$ref": "https://raw.githubusercontent.com/BlueFrog130/minecraft-add-on-schemas/master/constants/sounds.schema.json"
+                },
+                "sound_interval": {
+                    "description": "The range of time in seconds to randomly wait before playing the sound again",
+                    "$ref": "https://raw.githubusercontent.com/BlueFrog130/minecraft-add-on-schemas/master/types/range.schema.json"
+                },
                 "priority": {
                     "type": "number",
                     "description": "Priority of behavior. 0 being the highest priority level"
@@ -272,15 +280,7 @@
                 },
                 "jump_interval": {
                     "description": "The range of time in seconds to randomly wait before jumping again.\nDefault: 0",
-                    "type": "object",
-                    "properties": {
-                        "range_min": {
-                            "type": "number"
-                        },
-                        "range_max": {
-                            "type": "number"
-                        }
-                    }
+                    "$ref": "https://raw.githubusercontent.com/BlueFrog130/minecraft-add-on-schemas/master/types/range.schema.json"
                 },
                 "on_celebration_end_event": {
                     "description": "The event to trigger when the goal's duration expires.",
@@ -288,15 +288,7 @@
                 },
                 "sound_interval": {
                     "description": "The range of time in seconds to randomly wait before playing the sound again.\nDefault: 0",
-                    "type": "object",
-                    "properties": {
-                        "range_min": {
-                            "type": "number"
-                        },
-                        "range_max": {
-                            "type": "number"
-                        }
-                    }
+                    "$ref": "https://raw.githubusercontent.com/BlueFrog130/minecraft-add-on-schemas/master/types/range.schema.json"
                 }
             },
             "description": "This allows the mob celebrate by jumping up and playing a sound periodically."
@@ -609,7 +601,7 @@
                     "description": "Priority of behavior. 0 being the highest priority level"
                 },
                 "speed_modifier": {
-                    "description": 0.0
+                    "default": 0.0
                 },
                 "potions": {
                     "description": "A list of potions that this entity can drink. Each potion entry has the following parameters:",
@@ -1845,6 +1837,40 @@
             },
             "description": "Allows the mob to move back into water when on land."
         },
+        "minecraft:behavior.move_to_lava": {
+            "type": "object",
+            "properties": {
+                "priority": {
+                    "type": "number",
+                    "description": "Priority of behavior. 0 being the highest priority level"
+                },
+                "goal_radius": {
+                    "description": "Distance in blocks within the mob considers it has reached the goal. This is the \"wiggle room\" to stop the AI from bouncing back and forth trying to reach a specific spot\nDefault: 0.5",
+                    "default": 0.5,
+                    "type": "number"
+                },
+                "search_count": {
+                    "description": "The number of blocks each tick that the mob will check within it's search range and height for a valid block to move to. A value of 0 will have the mob check every block within range in one tick\nDefault: 10",
+                    "default": 10,
+                    "type": "integer"
+                },
+                "search_height": {
+                    "description": "Height in blocks the mob will look for water to move towards\nDefault: 1",
+                    "default": 1,
+                    "type": "integer"
+                },
+                "search_range": {
+                    "description": "The distance in blocks it will look for water to move towards\nDefault: 0",
+                    "default": 0,
+                    "type": "integer"
+                },
+                "speed_multiplier": {
+                    "description": "Movement speed multiplier of the mob when using this AI Goal\nDefault: 1.0",
+                    "default": 1.0,
+                    "type": "number"
+                }
+            }
+        },
         "minecraft:behavior.move_towards_restriction": {
             "type": "object",
             "properties": {
@@ -2154,6 +2180,11 @@
                     "type": "number",
                     "description": "Priority of behavior. 0 being the highest priority level"
                 },
+                "damage_sources": {
+                    "type": "array",
+                    "default": ["all"],
+                    "description": "The list of Entity Damage Sources that will cause this mob to panic"
+                },
                 "force": {
                     "description": "If true, this mob will not stop panicking until it can't move anymore or the goal is removed from it\nDefault: false",
                     "default": false,
@@ -2224,6 +2255,21 @@
                     "type": "number",
                     "description": "Priority of behavior. 0 being the highest priority level"
                 },
+                "can_pickup_any_item": {
+                    "description": "If true, the mob can pickup any item",
+                    "type": "boolean",
+                    "default": false
+                },
+                "can_pickup_to_hand_or_equipment": {
+                    "description": "If true, the mob can pickup items to its hand or armor slots",
+                    "type": "boolean",
+                    "default": true
+                },
+                "cooldown_after_being_attacked": {
+                    "description": "specifying for how many seconds after being attacked the goal should be unavailable.",
+                    "type": "integer",
+                    "default": 0
+                },
                 "goal_radius": {
                     "description": "Distance in blocks within the mob considers it has reached the goal. This is the \"wiggle room\" to stop the AI from bouncing back and forth trying to reach a specific spot\nDefault: 0.5",
                     "default": 0.5,
@@ -2233,6 +2279,11 @@
                     "description": "Maximum distance this mob will look for items to pick up\nDefault: 0.0",
                     "default": 0.0,
                     "type": "number"
+                },
+                "pickup_based_on_chance": {
+                    "description": "If true, depending on the difficulty, there is a random chance that the mob may not be able to pickup items",
+                    "type": "boolean",
+                    "default": false
                 },
                 "speed_multiplier": {
                     "description": "Movement speed multiplier of the mob when using this AI Goal\nDefault: 1.0",
@@ -3559,6 +3610,53 @@
                 }
             },
             "description": "Allows the wither to focus its attacks on whichever mob has dealt the most damage to it."
+        },
+        "minecraft:behavior.admire_item": {
+            "type": "object",
+            "properties": {
+                "priority": {
+                    "type": "number",
+                    "description": "Priority of behavior. 0 being the highest priority level"
+                },
+                "admire_item_sound": {
+                    "description": "The sound event to play when admiring the item",
+                    "$ref": "https://raw.githubusercontent.com/BlueFrog130/minecraft-add-on-schemas/master/constants/sounds.schema.json"
+                },
+                "sound_interval": {
+                    "description": "The range of time in seconds to randomly wait before playing the sound again.",
+                    "default": 0,
+                    "$ref": "https://raw.githubusercontent.com/BlueFrog130/minecraft-add-on-schemas/master/types/range.schema.json"
+                },
+                "on_admire_item_start": {
+                    "$ref": "https://raw.githubusercontent.com/BlueFrog130/minecraft-add-on-schemas/master/types/trigger.schema.json"
+                },
+                "on_admire_item_stop": {
+                    "$ref": "https://raw.githubusercontent.com/BlueFrog130/minecraft-add-on-schemas/master/types/trigger.schema.json"
+                }
+
+            }
+        },
+        "minecraft:behavior.barter": {
+            "type": "object",
+            "description": "Mobs can now barter when they pick up items, or when they receive an item during an interaction. For a mob to barter they need to have both the barter goal and the barter component, and the relevant configuration need to be done in the interact component and/or the shareables component",
+            "properties": {
+                "priority": {
+                    "description": "Specifies how the mob should prioritize this goal",
+                    "type": "integer",
+                    "default": 0
+                }
+            }
+        },
+        "minecraft:behavior.equip_item": {
+            "type": "object",
+            "description": "Mobs can now barter when they pick up items, or when they receive an item during an interaction. For a mob to barter they need to have both the barter goal and the barter component, and the relevant configuration need to be done in the interact component and/or the shareables component",
+            "properties": {
+                "priority": {
+                    "description": "Specifies how the mob should prioritize this goal",
+                    "type": "integer",
+                    "default": 0
+                }
+            }
         }
     }
 }
