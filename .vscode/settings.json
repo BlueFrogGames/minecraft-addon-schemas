@@ -4,6 +4,7 @@
         "*.json": "jsonc"
     },
     // Schema associations
+    // Based on Vanilla reference folder structure
     "json.schemas": [
         {
             "fileMatch": [
@@ -18,6 +19,13 @@
                 "/resources/entity/*.json"
             ],
             "url": "https://raw.githubusercontent.com/BlueFrog130/minecraft-add-on-schemas/master/client_entity.schema.json"
+        },
+        {
+            // spawn rules
+            "fileMatch": [
+                "/behaviors/spawn_rules/*.json"
+            ],
+            "url": "https://raw.githubusercontent.com/BlueFrog130/minecraft-add-on-schemas/master/spawn_rules.schema.json"
         }
     ]
 }

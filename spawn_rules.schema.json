@@ -1,0 +1,46 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema",
+    "type": "object",
+    "title": "Spawn Rules",
+    "description": "Spawn rules definition",
+    "properties": {
+        "format_version": {
+            "type": "string",
+            "default": "1.16.2"
+        },
+        "minecraft:spawn_rules": {
+            "type": "object",
+            "description": "Data-Driven spawning allows you to adjust the spawn conditions of mobs, including new mobs added to the game to spawn naturally in biomes, add / remove a mob's spawn egg to the creative inventory and set the mob's spawn egg, and add / remove a to the / summon command",
+            "properties": {
+                "description": {
+                    "type": "object",
+                    "properties": {
+                        "identifier": {
+                            "type": "string"
+                        },
+                        "population_control": {
+                            "anyOf": [
+                                {
+                                    "type": "string"
+                                },
+                                {
+                                    "enum": [
+                                        "monster",
+                                        "animal",
+                                        "water_animal"
+                                    ]
+                                }
+                            ]
+                        }
+                    }
+                },
+                "conditions": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "https://raw.githubusercontent.com/BlueFrog130/minecraft-add-on-schemas/master/spawn_rules/components.schema.json"
+                    }
+                }
+            }
+        }
+    }
+}
