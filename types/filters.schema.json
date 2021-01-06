@@ -3,9 +3,10 @@
     "additionalProperties": false,
     "type": ["array", "object"],
     "default": {},
-    "allOf": [
+    "anyOf": [
         { "$ref": "#/definitions/filter" },
         {
+            "type": "object",
             "properties": {
                 "all_of": {
                     "type": "array",
@@ -17,6 +18,7 @@
             }
         },
         {
+            "type": "object",
             "properties": {
                 "any_of": {
                     "type": "array",
@@ -28,6 +30,7 @@
             }
         },
         {
+            "type": "object",
             "properties": {
                 "none_of": {
                     "type": "array",
@@ -39,20 +42,16 @@
             }
         },
         {
+            "type": "array",
             "items": {
                 "type": "object",
                 "$ref": "#/definitions/filter"
             }
         }
     ],
-    "if": {
-        "required": ["test"]
-    },
-    "then": {
-        "not": { "required": ["any_of", "none_of", "all_of"] }
-    },
     "definitions": {
         "filter": {
+            "type": "object",
             "properties": {
                 "test": {
                     "type": "string",
@@ -2462,8 +2461,12 @@
                                 ]
                             },
                             "value": {
-                                "description": "(Required) The Family name to look for",
-                                "type": "string"
+                                "description": "(Required) The weather name to look for",
+                                "enum": [
+                                    "thunderstorm",
+                                    "rain",
+                                    "clear"
+                                ]
                             }
                         }
                     }

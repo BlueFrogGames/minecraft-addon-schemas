@@ -812,7 +812,7 @@
                 "start_delay": {
                     "description": "Time the mob will wait before starting to move towards the mount\nDefault: 0",
                     "default": 0,
-                    "type": "integer"
+                    "type": "number"
                 },
                 "target_needed": {
                     "description": "If true, the mob will only look for a mount if it has a target\nDefault: false",
@@ -1563,10 +1563,15 @@
                 "mingle_partner_type": {
                     "description": "The entity type that this entity is allowed to mingle with\nDefault: empty",
                     "default": [],
-                    "type": "array",
-                    "items": {
-                        "$ref": "https://raw.githubusercontent.com/BlueFrog130/minecraft-add-on-schemas/master/constants/entities.schema.json"
-                    }
+                    "oneOf": [
+                        {
+                            "type": "array",
+                            "items": {
+                                "$ref": "https://raw.githubusercontent.com/BlueFrog130/minecraft-add-on-schemas/master/constants/entities.schema.json"
+                            }
+                        },
+                        { "$ref": "https://raw.githubusercontent.com/BlueFrog130/minecraft-add-on-schemas/master/constants/entities.schema.json" }
+                    ]
                 },
                 "speed_multiplier": {
                     "description": "Movement speed multiplier of the mob when using this AI Goal\nDefault: 1.0",
@@ -2782,7 +2787,7 @@
                             "particle_color": {
                                 "type": "string",
                                 "description": "HEX color code",
-                                "pattern": "^#(?:[0-9a-fA-F]{2}){1,2,3,4}$"
+                                "pattern": "^#(?:[0-9a-fA-F]{2}){1,4}$"
                             },
                             "weight": {
                                 "type": "number"
@@ -3320,7 +3325,7 @@
                             "particle_color": {
                                 "description": "The color of the particles for this spell",
                                 "type": "string",
-                                "pattern": "^#(?:[0-9a-fA-F]{2}){1,2,3,4}$"
+                                "pattern": "^#(?:[0-9a-fA-F]{2}){1,4}$"
                             },
                             "sequence": {
                                 "description": "List of steps for the spell. Each step has the following parameters:",
