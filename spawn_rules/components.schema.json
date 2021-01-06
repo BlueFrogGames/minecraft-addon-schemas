@@ -89,23 +89,12 @@
             }
         },
         "minecraft:biome_filter": {
-            "allOf": [
-                {
-                    "$ref": "https://raw.githubusercontent.com/BlueFrog130/minecraft-add-on-schemas/master/types/filters.schema.json"
-                },
-                {
-                    "properties": {
-                        "test": {
-                            "type": "string",
-                            "default": "has_biome_tag"
-                        },
-                        "operator":{
-                            "type": "string",
-                            "default": "=="
-                        }
-                    }
-                }
-            ]
+            "$ref": "https://raw.githubusercontent.com/BlueFrog130/minecraft-add-on-schemas/master/types/filters.schema.json",
+            "default": {
+                "test": "has_biome_tag",
+                "operator": "==",
+                "value": ""
+            }
         },
         "minecraft:density_limit": {
             "type": "object",
