@@ -1,0 +1,139 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema",
+    "type": "object",
+    "title": "Spawn Rules",
+    "description": "Spawn rules definition",
+    "properties": {
+        "minecraft:spawns_on_surface": {
+            "type": "object",
+            "default": {}
+        },
+        "minecraft:spawns_underwater": {
+            "type": "object",
+            "default": {}
+        },
+        "minecraft:brightness_filter": {
+            "type": "object",
+            "properties": {
+                "adjust_for_weather": {
+                    "description": "This determines if weather can affect the light level conditions that cause the mob to spawn (e.g. Allowing hostile mobs to spawn during the day when it rains.)",
+                    "type": "boolean",
+                    "default": false
+                },
+                "max": {
+                    "description": "This is the maximum light level value that allows the mob to spawn",
+                    "type": "number",
+                    "default": 15.0
+                },
+                "min": {
+                    "description": "This is the minimum light level value that allows the mob to spawn",
+                    "type": "number",
+                    "default": 0.0
+                }
+            }
+        },
+        "minecraft:weight": {
+            "type": "object",
+            "properties": {
+                "default": {
+                    "description": "This is the priority of the mob spawning",
+                    "type": "number",
+                    "default": 0.0
+                }
+            }
+        },
+        "minecraft:difficulty_filter": {
+            "type": "object",
+            "properties": {
+                "max": {
+                    "description": "This is the maximum difficulty level that a mob spawns",
+                    "type": "string",
+                    "enum": [
+                        "peaceful",
+                        "easy",
+                        "normal",
+                        "hard"
+                    ]
+                },
+                "min": {
+                    "description": "This is the minimum difficulty level that a mob spawns",
+                    "type": "string",
+                    "enum": [
+                        "peaceful",
+                        "easy",
+                        "normal",
+                        "hard"
+                    ]
+                }
+            }
+        },
+        "minecraft:herd": {
+            "type": "object",
+            "properties": {
+                "event": {
+                    "description": "This is an event that can be triggered from spawning",
+                    "$ref": "https://raw.githubusercontent.com/BlueFrog130/minecraft-add-on-schemas/master/constants/events.schema.json"
+                },
+                "event_skip_count": {
+                    "description": "This is the number of mobs spawned before the specified event is triggered",
+                    "type": "number"
+                },
+                "max_size": {
+                    "description": "This is the maximum number of mobs that spawn in a herd",
+                    "type": "number"
+                },
+                "min_size": {
+                    "description": "This is the minimum number of mobs that spawn in a herd",
+                    "type": "number"
+                }
+            }
+        },
+        "minecraft:biome_filter": {
+            "allOf": [
+                {
+                    "$ref": "https://raw.githubusercontent.com/BlueFrog130/minecraft-add-on-schemas/master/types/filters.schema.json"
+                },
+                {
+                    "properties": {
+                        "test": {
+                            "type": "string",
+                            "default": "has_biome_tag"
+                        },
+                        "operator":{
+                            "type": "string",
+                            "default": "=="
+                        }
+                    }
+                }
+            ]
+        },
+        "minecraft:density_limit": {
+            "type": "object",
+            "properties": {
+                "surface": {
+                    "type": "integer",
+                    "description": "This is the maximum number of mobs of this type spawnable on the surface"
+                },
+                "underground": {
+                    "description": "This is the maximum number of mobs of this type spawnable underground",
+                    "type": "integer"
+                }
+            }
+        },
+        "minecraft:permute_type": {
+            "description": "WARNING: Undocumented component - schema may be incorrect",
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "weight": {
+                        "type": "number"
+                    },
+                    "entity_type": {
+                        "$ref": "https://raw.githubusercontent.com/BlueFrog130/minecraft-add-on-schemas/master/constants/entities.schema.json"
+                    }
+                }
+            }
+        }
+    }
+}
