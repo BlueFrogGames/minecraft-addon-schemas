@@ -21,11 +21,18 @@
             "url": "https://raw.githubusercontent.com/BlueFrog130/minecraft-add-on-schemas/master/client_entity.schema.json"
         },
         {
-            // spawn rules
+            // Spawn rules
             "fileMatch": [
                 "/behaviors/spawn_rules/*.json"
             ],
             "url": "https://raw.githubusercontent.com/BlueFrog130/minecraft-add-on-schemas/master/spawn_rules.schema.json"
+        },
+        {
+            // Items
+            "fileMatch": [
+                "/behaviors/items/*.json"
+            ],
+            "url": "https://raw.githubusercontent.com/BlueFrog130/minecraft-add-on-schemas/master/item.schema.json"
         }
     ]
 }
