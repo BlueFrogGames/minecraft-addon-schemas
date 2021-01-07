@@ -113,7 +113,7 @@
                         "spawn_egg": {
                             "description": "Example Spawn Egg using hex value",
                             "type": "object",
-                            "anyOf": [
+                            "oneOf": [
                                 {
                                     "properties": {
                                         "base_color": {

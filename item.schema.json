@@ -1,0 +1,37 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema",
+    "type": "object",
+    "title": "Item Schema",
+    "properties": {
+        "format_version": {
+            "type": "string",
+            "default": "1.16.2"
+        },
+        "minecraft:item": {
+            "type": "object",
+            "properties": {
+                "description": {
+                    "type": "object",
+                    "properties": {
+                        "identifier": {
+                            "type": "string",
+                            "description": "The identifier for this item. The name must include a namespace and must not use the Minecraft namespace unless overriding a Vanilla item."
+                        },
+                        "category": {
+                            "type": "string",
+                            "description": "The category for this item. Categories are used to control high level properties of how the item is integrated into the bedrock engine, such as whether it can be used in slash commands."
+                        },
+                        "is_experimental": {
+                            "type": "boolean",
+                            "default": false,
+                            "description": "If this item is experimental, it will only be registered if the world is marked as experimental."
+                        }
+                    }
+                },
+                "components": {
+                    "$ref": "https://raw.githubusercontent.com/BlueFrog130/minecraft-add-on-schemas/master/items/components.schema.json"
+                }
+            }
+        }
+    }
+}
