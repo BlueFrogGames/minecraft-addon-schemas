@@ -1,0 +1,14 @@
+{
+    "format_version": "1.16.2",
+    "minecraft:spawn_rules": {
+        "description": {
+            "identifier": "",
+            "population_control": "animal"
+        },
+        "conditions":[{
+            "minecraft:biome_filter": [
+                { "test": "has_biome_tag", "operator": "==", "value": "jungle" }
+            ]
+        }]
+    }
+}

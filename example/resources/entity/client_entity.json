@@ -1,0 +1,11 @@
+{
+    "format_version": "1.16.2",
+    "minecraft:client_entity": {
+        "description": {
+            "spawn_egg": {
+                "texture": "",
+                "texture_index": 0
+            }
+        }
+    }
+}

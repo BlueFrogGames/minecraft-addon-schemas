@@ -1,0 +1,11 @@
+{
+    "format_version": "1.16.2",
+    "minecraft:entity": {
+        "description": {
+            "identifier": "",
+            "is_spawnable": true,
+            "is_summonable": true,
+            "is_experimental": false
+        }
+    }
+}
