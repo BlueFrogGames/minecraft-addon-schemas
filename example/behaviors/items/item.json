@@ -1,0 +1,16 @@
+{
+    "format_version": "1.16.2",
+    "minecraft:item": {
+        "description": {
+            "identifier": ""
+        },
+        "components": {
+            "minecraft:seed": {
+                "crop_result": "",
+                "plant_at": [
+                    "custom_block"
+                ]
+            }
+        }
+    }
+}
