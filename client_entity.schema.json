@@ -54,7 +54,7 @@
                         },
                         "animations": {
                             "$ref": "#/definitions/user-defined-default",
-                            "description": "These names are used by the animation controller JSON. Players can reference animations from the vanilla Minecraft Resource Pack or create their own. Custom animations should be in the animation folder at the root of the Resource Pack."
+                            "description": "These names are used by the animation controller JSON. Players can reference animations from the vanilla Minecraft Resource Pack or create their own. Custom animations should be in the 'animations' folder at the root of the Resource Pack."
                         },
                         "materials": {
                             "$ref": "#/definitions/user-defined-default"
@@ -71,27 +71,42 @@
                                     }
                                 },
                                 "scale": {
-                                    "type": "number",
-                                    "default": 1.0
+                                    "oneOf": [
+                                        {
+                                            "type": "number",
+                                            "default": 1.0
+                                        },
+                                        {
+                                            "type": "string",
+                                            "default": "1.0"
+                                        }
+                                    ]
                                 }
                             }
                         },
                         "animation_controllers": {
-                            "description": "Each Controller contains a list of states that play one or more animations. Allows the player to assign names to reference the long names for animation controllers. Names are required and need to be unique from all other names in the animation controllers for that mob. Players can reference animation controllers from the vanilla Minecraft Resource Pack or create their own. Custom animation controllers should be in the animation_controllers folder at the root of the Resource Pack.",
+                            "description": "Each Controller contains a list of states that play one or more animations. Allows the player to assign names to reference the long names for animation controllers. Names are required and need to be unique from all other names in the animation controllers for that mob. Players can reference animation controllers from the vanilla Minecraft Resource Pack or create their own. Custom animation controllers should be in the 'animation_controllers' folder at the root of the Resource Pack.",
                             "type": "array",
                             "items": {
                                 "$ref": "#/definitions/user-defined"
                             }
                         },
                         "particle_effects": {
-                            "description": "Keys are required and need to be unique from all other keys in the animation controllers. Players can reference particles from the vanilla Minecraft Resource Pack or create their own. Custom particles should be in the particle folder at the root of the Resource Pack.",
+                            "description": "Keys are required and need to be unique from all other keys in the animation controllers. Players can reference particles from the vanilla Minecraft Resource Pack or create their own. Custom particles should be in the 'particles' folder at the root of the Resource Pack.",
                             "$ref": "#/definitions/user-defined"
                         },
                         "render_controllers": {
-                            "description": "Players can reference Render Controllers from the vanilla Minecraft Resource Pack or create their own. Custom Render Controllers should be in the textures folder at the root of the Resource Pack.",
+                            "description": "Players can reference Render Controllers from the vanilla Minecraft Resource Pack or create their own. Custom Render Controllers should be in the 'render_controllers' folder at the root of the Resource Pack.",
                             "type": "array",
                             "items": {
-                                "type": "string"
+                                "oneOf": [
+                                    {
+                                        "type": "string"
+                                    },
+                                    {
+                                        "$ref": "#/definitions/user-defined"
+                                    }
+                                ]
                             }
                         },
                         "locators": {
