@@ -3,16 +3,16 @@
     "type": "object",
     "properties": {
         "minecraft:entity_born": {
-            "$ref": "https://raw.githubusercontent.com/BlueFrogGames/minecraft-add-on-schemas/master/types/event.schema.json"
+            "$ref": "../types/event.schema.json"
         },
         "minecraft:entity_spawned": {
-            "$ref": "https://raw.githubusercontent.com/BlueFrogGames/minecraft-add-on-schemas/master/types/event.schema.json"
+            "$ref": "../types/event.schema.json"
         },
         "minecraft:entity_transformed": {
-            "$ref": "https://raw.githubusercontent.com/BlueFrogGames/minecraft-add-on-schemas/master/types/event.schema.json"
+            "$ref": "../types/event.schema.json"
         },
         "minecraft:on_prime": {
-            "$ref": "https://raw.githubusercontent.com/BlueFrogGames/minecraft-add-on-schemas/master/types/event.schema.json"
+            "$ref": "../types/event.schema.json"
         }
     }
 }

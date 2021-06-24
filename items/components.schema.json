@@ -58,7 +58,7 @@
                             "type": "string"
                         },
                         {
-                            "$ref": "https://raw.githubusercontent.com/BlueFrogGames/minecraft-add-on-schemas/master/types/trigger.schema.json"
+                            "$ref": "../types/trigger.schema.json"
                         }
                     ]
                 },
@@ -146,7 +146,7 @@
                 "effects": {
                     "type": "array",
                     "items": {
-                        "$ref": "https://raw.githubusercontent.com/BlueFrogGames/minecraft-add-on-schemas/master/types/effects.schema.json"
+                        "$ref": "../types/effects.schema.json"
                     }
                 }
             }
@@ -201,7 +201,7 @@
                             "type": "string"
                         },
                         {
-                            "$ref": "https://raw.githubusercontent.com/BlueFrogGames/minecraft-add-on-schemas/master/types/trigger.schema.json"
+                            "$ref": "../types/trigger.schema.json"
                         }
                     ]
                 }
@@ -218,7 +218,7 @@
                             "type": "string"
                         },
                         {
-                            "$ref": "https://raw.githubusercontent.com/BlueFrogGames/minecraft-add-on-schemas/master/types/trigger.schema.json"
+                            "$ref": "../types/trigger.schema.json"
                         }
                     ]
                 }
@@ -328,15 +328,15 @@
             "properties": {
                 "on_hit_block": {
                     "description": "Trigger for letting you know when this item is used to hit a block",
-                    "$ref": "https://raw.githubusercontent.com/BlueFrogGames/minecraft-add-on-schemas/master/types/trigger.schema.json"
+                    "$ref": "../types/trigger.schema.json"
                 },
                 "on_hurt_entity": {
                     "description": "Trigger for letting you know when this item is used to hurt another mob",
-                    "$ref": "https://raw.githubusercontent.com/BlueFrogGames/minecraft-add-on-schemas/master/types/trigger.schema.json"
+                    "$ref": "../types/trigger.schema.json"
                 },
                 "on_not_hurt_entity": {
                     "description": "Trigger for letting you know when this item hit another actor, but didn't do damage",
-                    "$ref": "https://raw.githubusercontent.com/BlueFrogGames/minecraft-add-on-schemas/master/types/trigger.schema.json"
+                    "$ref": "../types/trigger.schema.json"
                 }
             }
         },
@@ -349,7 +349,7 @@
                 },
                 "slot": {
                     "description": "equipment_slot: slot.weapon.mainhand, slot.weapon.offhand, slot.armor.head, slot.armor.chest, slot.armor.legs, slot.armor.feet, slot.hotbar, slot.inventory, slot.enderchest, slot.saddle, slot.armor, slot.chest",
-                    "$ref": "https://raw.githubusercontent.com/BlueFrogGames/minecraft-add-on-schemas/master/constants/slots.schema.json"
+                    "$ref": "../constants/slots.schema.json"
                 }
             }
         },
@@ -377,12 +377,12 @@
                 "plant_at": {
                     "anyOf": [
                         {
-                            "$ref": "https://raw.githubusercontent.com/BlueFrogGames/minecraft-add-on-schemas/master/constants/blocks.schema.json"
+                            "$ref": "../constants/blocks.schema.json"
                         },
                         {
                             "type": "array",
                             "items": {
-                                "$ref": "https://raw.githubusercontent.com/BlueFrogGames/minecraft-add-on-schemas/master/constants/blocks.schema.json"
+                                "$ref": "../constants/blocks.schema.json"
                             }
                         }
                     ]
