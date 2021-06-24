@@ -72,7 +72,7 @@
             "properties": {
                 "event": {
                     "description": "This is an event that can be triggered from spawning",
-                    "$ref": "https://raw.githubusercontent.com/BlueFrog130/minecraft-add-on-schemas/master/constants/events.schema.json"
+                    "$ref": "https://raw.githubusercontent.com/BlueFrogGames/minecraft-add-on-schemas/master/constants/events.schema.json"
                 },
                 "event_skip_count": {
                     "description": "This is the number of mobs spawned before the specified event is triggered",
@@ -89,7 +89,7 @@
             }
         },
         "minecraft:biome_filter": {
-            "$ref": "https://raw.githubusercontent.com/BlueFrog130/minecraft-add-on-schemas/master/types/filters.schema.json",
+            "$ref": "https://raw.githubusercontent.com/BlueFrogGames/minecraft-add-on-schemas/master/types/filters.schema.json",
             "default": {
                 "test": "has_biome_tag",
                 "operator": "==",
@@ -119,7 +119,7 @@
                         "type": "number"
                     },
                     "entity_type": {
-                        "$ref": "https://raw.githubusercontent.com/BlueFrog130/minecraft-add-on-schemas/master/constants/entities.schema.json"
+                        "$ref": "https://raw.githubusercontent.com/BlueFrogGames/minecraft-add-on-schemas/master/constants/entities.schema.json"
                     }
                 }
             }

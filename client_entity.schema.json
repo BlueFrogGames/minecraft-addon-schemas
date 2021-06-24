@@ -116,7 +116,7 @@
                                     "type": "object",
                                     "patternProperties": {
                                         "^.+$": {
-                                            "$ref": "https://raw.githubusercontent.com/BlueFrog130/minecraft-add-on-schemas/master/types/vector.schema.json"
+                                            "$ref": "https://raw.githubusercontent.com/BlueFrogGames/minecraft-add-on-schemas/master/types/vector.schema.json"
                                         }
                                     }
                                 }
