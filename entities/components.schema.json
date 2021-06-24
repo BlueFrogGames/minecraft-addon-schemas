@@ -51,7 +51,7 @@
                             "$ref": "../types/filters.schema.json"
                         },
                         "event": {
-                            "$ref":  "./constants/events.schema.json"
+                            "$ref": "../constants/events.schema.json"
                         }
                     }
                 },
