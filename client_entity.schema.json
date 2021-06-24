@@ -49,6 +49,9 @@
                             "type": "string",
                             "default": "1.16.2"
                         },
+                        "geometry": {
+                            "$ref": "#/definitions/user-defined-default"
+                        },
                         "textures": {
                             "$ref": "#/definitions/user-defined-default"
                         },
