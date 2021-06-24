@@ -9,7 +9,7 @@
                 "damage": {
                     "description": "Range of the random amount of damage the melee attack deals. A negative value can heal the entity instead of hurting it",
                     "oneOf": [
-                        { "$ref": "./types/range.schema.json" },
+                        { "$ref": "../types/range.schema.json" },
                         { "type": "number" }
                     ]
                 },
@@ -31,7 +31,7 @@
                     "description": "List of effects to add to this entity after adding this component",
                     "type": "array",
                     "items": {
-                        "$ref": "./types/effects.schema.json"
+                        "$ref": "../types/effects.schema.json"
                     }
                 },
                 "remove_effects": {

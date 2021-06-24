@@ -7,7 +7,7 @@
             "properties": {
                 "filters": {
                     "description": "Conditions that make this entry in the list valid",
-                    "$ref": "./types/filters.schema.json"
+                    "$ref": "../types/filters.schema.json"
                 },
                 "max_dist": {
                     "description": "Maximum distance this mob can be away to be a valid choice\nDefault: 16",
@@ -126,7 +126,7 @@
                 },
                 "on_arrival": {
                     "description": "Event to run when the mob reaches their jobsite and finishes working.",
-                    "$ref": "./types/trigger.schema.json"
+                    "$ref": "../types/trigger.schema.json"
                 },
                 "sound_delay_max": {
                     "description": "The max interval in which a sound will play\nDefault: 0",
@@ -155,11 +155,11 @@
             "properties": {
                 "avoid_mob_sound": {
                     "description": "The sound event to play when the mob is angry",
-                    "$ref": "./constants/sounds.schema.json"
+                    "$ref": "../constants/sounds.schema.json"
                 },
                 "sound_interval": {
                     "description": "The range of time in seconds to randomly wait before playing the sound again",
-                    "$ref": "./types/range.schema.json"
+                    "$ref": "../types/range.schema.json"
                 },
                 "priority": {
                     "type": "number",
@@ -221,7 +221,7 @@
                     "description": "List of items that this mob likes",
                     "type": "array",
                     "items": {
-                        "$ref": "./constants/items.schema.json"
+                        "$ref": "../constants/items.schema.json"
                     }
                 },
                 "look_distance": {
@@ -232,7 +232,7 @@
                 "look_time": {
                     "description": "The range of time in seconds this mob will stare at the player holding a food they like, begging for it\nDefault: [2, 4]",
                     "default": [2, 4],
-                    "$ref": "./types/range.schema.json"
+                    "$ref": "../types/range.schema.json"
                 }
             },
             "description": "Allows this mob to look at and follow the player that holds food they like."
@@ -271,7 +271,7 @@
                 },
                 "celebration_sound": {
                     "description": "The sound to occasionally play.",
-                    "$ref": "./constants/sounds.schema.json"
+                    "$ref": "../constants/sounds.schema.json"
                 },
                 "duration": {
                     "description": "The duration of the celebration (in seconds).\nDefault: 1.0",
@@ -280,15 +280,15 @@
                 },
                 "jump_interval": {
                     "description": "The range of time in seconds to randomly wait before jumping again.\nDefault: 0",
-                    "$ref": "./types/range.schema.json"
+                    "$ref": "../types/range.schema.json"
                 },
                 "on_celebration_end_event": {
                     "description": "The event to trigger when the goal's duration expires.",
-                    "$ref": "./types/trigger.schema.json"
+                    "$ref": "../types/trigger.schema.json"
                 },
                 "sound_interval": {
                     "description": "The range of time in seconds to randomly wait before playing the sound again.\nDefault: 0",
-                    "$ref": "./types/range.schema.json"
+                    "$ref": "../types/range.schema.json"
                 }
             },
             "description": "This allows the mob celebrate by jumping up and playing a sound periodically."
@@ -314,7 +314,7 @@
                     "description": "The list of items that can be used to charge the held item.",
                     "type": "array",
                     "items": {
-                        "$ref": "./constants/items.schema.json"
+                        "$ref": "../constants/items.schema.json"
                     }
                 }
             },
@@ -335,7 +335,7 @@
                 "height_above_target_range": {
                     "description": "When the mob finds a target, the range of height in blocks above the target to start the anchor point.\nDefault: [0.0, 0.0]",
                     "default": [0.0, 0.0],
-                    "$ref": "./types/range.schema.json"
+                    "$ref": "../types/range.schema.json"
                 },
                 "height_change_chance": {
                     "description": "A random value to determine when to change the height of the mob from the anchor point. This has a 1/value chance every tick to do so.\nDefault: 350",
@@ -345,7 +345,7 @@
                 "height_offset_range": {
                     "description": "The range of height in blocks offset the mob can have from it's anchor point.\nDefault: [0.0, 0.0]",
                     "default": [0.0, 0.0],
-                    "$ref": "./types/range.schema.json"
+                    "$ref": "../types/range.schema.json"
                 },
                 "radius_change_chance": {
                     "description": "A random value to determine when to increase the size of the radius up to the maximum. This has a 1/value chance every tick to do so.\nDefault: 250",
@@ -355,7 +355,7 @@
                 "radius_range": {
                     "description": "Range of radius in blocks of the circle to move around.\nDefault: [5.0, 15.0]",
                     "default": [5.0, 15.0],
-                    "$ref": "./types/range.schema.json"
+                    "$ref": "../types/range.schema.json"
                 },
                 "speed_multiplier": {
                     "description": "Movement speed multiplier of the mob when using this AI Goal\nDefault: 1.0",
@@ -385,7 +385,7 @@
                 "aggro_sound": {
                     "description": "Sound to occasionally play while defending.",
                     "type": "string",
-                    "$ref": "./constants/sounds.schema.json"
+                    "$ref": "../constants/sounds.schema.json"
                 },
                 "sound_chance": {
                     "type": "number"
@@ -423,7 +423,7 @@
                     "type": "number"
                 },
                 "on_defend_start": {
-                    "$ref": "./types/trigger.schema.json"
+                    "$ref": "../types/trigger.schema.json"
                 }
             },
             "description": "Allows the mob to target another mob that hurts an entity it trusts."
@@ -488,7 +488,7 @@
                 },
                 "sound_event": {
                     "description": "The sound event to play when the attack starts",
-                    "$ref": "./constants/sounds.schema.json"
+                    "$ref": "../constants/sounds.schema.json"
                 },
                 "speed_multiplier": {
                     "description": "Movement speed multiplier of the mob when using this AI Goal\nDefault: 1.0",
@@ -616,12 +616,12 @@
                             },
                             "filters": {
                                 "description": "The filters to use when determining if this potion can be selected.",
-                                "$ref": "./types/filters.schema.json"
+                                "$ref": "../types/filters.schema.json"
                             },
                             "id": {
                                 "description": "The registry ID of the potion to use\nDefault: -1",
                                 "default": -1,
-                                "$ref": "./constants/potions.schema.json"
+                                "$ref": "../constants/potions.schema.json"
                             }
                         }
                     }
@@ -674,7 +674,7 @@
                 },
                 "on_drop_attempt": {
                     "description": "Event to run when this mob attempts to drop an item.",
-                    "$ref": "./types/trigger.schema.json"
+                    "$ref": "../types/trigger.schema.json"
                 },
                 "search_height": {
                     "description": "Height in blocks from the target the mob can be.\nDefault: 1",
@@ -694,7 +694,7 @@
                 "time_of_day_range": {
                     "description": "The valid times of day that this goal can be used.  For reference: noon is 0.0, sunset is 0.25, midnight is 0.5, and sunrise is 0.75, and back to noon for 1.0.\nDefault: [0.0, 1.0]",
                     "default": [0.0, 1.0],
-                    "$ref": "./types/range.schema.json"
+                    "$ref": "../types/range.schema.json"
                 }
             },
             "description": "Allows the mob to move near a target and drop an item."
@@ -708,7 +708,7 @@
                 },
                 "on_eat": {
                     "description": "Trigger to fire when the mob eats a block of grass",
-                    "$ref": "./types/trigger.schema.json"
+                    "$ref": "../types/trigger.schema.json"
                 }
             },
             "description": "Allows the mob to eat a block (for example, sheep eating grass)."
@@ -887,7 +887,7 @@
                 "float_duration": {
                     "description": "Range of time in seconds the mob will float around before landing and choosing to do something else\nDefault: [0.0, 0.0]",
                     "default": [0.0, 0.0],
-                    "$ref": "./types/range.schema.json"
+                    "$ref": "../types/range.schema.json"
                 },
                 "must_reach": {
                     "description": "If true, the point has to be reachable to be a valid target\nDefault: false",
@@ -1053,16 +1053,16 @@
                 },
                 "on_failed": {
                     "description": "Event to run when the mob is unable to get home due to the home position being too far away or if the mob is in a different dimension.",
-                    "$ref": "./types/trigger.schema.json"
+                    "$ref": "../types/trigger.schema.json"
                 },
                 "on_home": {
                     "description": "Event to run when this mob arrives at home.",
                     "oneOf": [
                         {
                             "type": "array",
-                            "items": { "$ref": "./types/trigger.schema.json" }
+                            "items": { "$ref": "../types/trigger.schema.json" }
                         },
-                        { "$ref": "./types/trigger.schema.json" }
+                        { "$ref": "../types/trigger.schema.json" }
                     ]
                 },
                 "speed_multiplier": {
@@ -1117,7 +1117,7 @@
                 },
                 "hurt_by_target_event": {
                     "description": "Event to run when target hurts the mob. This event is broadcasted if broadcast is true.",
-                    "$ref": "./types/trigger.schema.json"
+                    "$ref": "../types/trigger.schema.json"
                 },
                 "min_radius": {
                     "description": "Minimum distance the target must be for the mob to run this goal.\nDefault: 10.0f",
@@ -1126,7 +1126,7 @@
                 },
                 "within_radius_event": {
                     "description": "Event to run when target is within the radius. This event is broadcasted if broadcast is true.",
-                    "$ref": "./types/trigger.schema.json"
+                    "$ref": "../types/trigger.schema.json"
                 }
             },
             "description": "The mob freezes and looks at the mob they are targeting."
@@ -1290,7 +1290,7 @@
                 },
                 "on_lay": {
                     "description": "Event to run when this mob lays the egg.",
-                    "$ref": "./types/trigger.schema.json"
+                    "$ref": "../types/trigger.schema.json"
                 },
                 "search_count": {
                     "description": "The number of blocks each tick that the mob will check within it's search range and height for a valid block to move to. A value of 0 will have the mob check every block within range in one tick\nDefault: 10",
@@ -1354,7 +1354,7 @@
                 },
                 "filters": {
                     "description": "Filter to determine the conditions for this mob to look at the entity",
-                    "$ref": "./types/filters.schema.json"
+                    "$ref": "../types/filters.schema.json"
                 },
                 "look_distance": {
                     "description": "The distance in blocks from which the entity will look at\nDefault: 8.0",
@@ -1364,7 +1364,7 @@
                 "look_time": {
                     "description": "Time range to look at the entity\nDefault: [2, 4]",
                     "default": [2, 4],
-                    "$ref": "./types/range.schema.json"
+                    "$ref": "../types/range.schema.json"
                 },
                 "probability": {
                     "description": "The probability of looking at the target. A value of 1.00 is 100%\nDefault: 0.02",
@@ -1399,7 +1399,7 @@
                 "look_time": {
                     "description": "Time range to look at the entity\nDefault: [2, 4]",
                     "default": [2, 4],
-                    "$ref": "./types/range.schema.json"
+                    "$ref": "../types/range.schema.json"
                 },
                 "probability": {
                     "description": "The probability of looking at the target. A value of 1.00 is 100%\nDefault: 0.02",
@@ -1434,7 +1434,7 @@
                 "look_time": {
                     "description": "Time range to look at the entity\nDefault: [2, 4]",
                     "default": [2, 4],
-                    "$ref": "./types/range.schema.json"
+                    "$ref": "../types/range.schema.json"
                 },
                 "probability": {
                     "description": "The probability of looking at the target. A value of 1.00 is 100%\nDefault: 0.02",
@@ -1469,7 +1469,7 @@
                 "look_time": {
                     "description": "Time range to look at the entity\nDefault: [2, 4]",
                     "default": [2, 4],
-                    "$ref": "./types/range.schema.json"
+                    "$ref": "../types/range.schema.json"
                 },
                 "probability": {
                     "description": "The probability of looking at the target. A value of 1.00 is 100%\nDefault: 0.02",
@@ -1567,10 +1567,10 @@
                         {
                             "type": "array",
                             "items": {
-                                "$ref": "./constants/entities.schema.json"
+                                "$ref": "../constants/entities.schema.json"
                             }
                         },
-                        { "$ref": "./constants/entities.schema.json" }
+                        { "$ref": "../constants/entities.schema.json" }
                     ]
                 },
                 "speed_multiplier": {
@@ -1663,9 +1663,9 @@
                     "oneOf": [
                         {
                             "type": "array",
-                            "items": { "$ref": "./types/trigger.schema.json" }
+                            "items": { "$ref": "../types/trigger.schema.json" }
                         },
-                        { "$ref": "./types/trigger.schema.json" }
+                        { "$ref": "../types/trigger.schema.json" }
                     ]
                 },
                 "on_stay_completed": {
@@ -1673,9 +1673,9 @@
                     "oneOf": [
                         {
                             "type": "array",
-                            "items": { "$ref": "./types/trigger.schema.json" }
+                            "items": { "$ref": "../types/trigger.schema.json" }
                         },
-                        { "$ref": "./types/trigger.schema.json" }
+                        { "$ref": "../types/trigger.schema.json" }
                     ]
                 },
                 "search_height": {
@@ -1702,13 +1702,13 @@
                     "description": "List or string of block descriptions",
                     "type": "array",
                     "items": {
-                        "$ref": "./constants/blocks.schema.json"
+                        "$ref": "../constants/blocks.schema.json"
                     }
                 },
                 "target_offset": {
                     "description": "The offset is added to the target blocks position where [0.0, 0.0, 0.0] means the center of the block.\nDefault: [0.0, 0.0, 0.0]",
                     "default": [0.0, 0.0, 0.0],
-                    "$ref": "./types/vector.schema.json"
+                    "$ref": "../types/vector.schema.json"
                 },
                 "target_selection_method": {
                     "description": "Specifies what method of target selection should be used when there are multiple candidates within range. The available methods are 'nearest' and 'random'.",
@@ -2339,7 +2339,7 @@
                     "description": "Blocks that the mob is looking for to eat/raid",
                     "type": "array",
                     "items": {
-                        "$ref": "./constants/blocks.schema.json"
+                        "$ref": "../constants/blocks.schema.json"
                     }
                 },
                 "eat_delay": {
@@ -2488,7 +2488,7 @@
                 "look_time": {
                     "description": "The range of time in seconds the mob will stay looking in a random direction before looking elsewhere\nDefault: [2, 4]",
                     "default": [2, 4],
-                    "$ref": "./types/range.schema.json"
+                    "$ref": "../types/range.schema.json"
                 }
             },
             "description": "Allows the mob to randomly look around."
@@ -2763,11 +2763,11 @@
                                         },
                                         "event": {
                                             "description": "The event to send to the entity",
-                                            "$ref": "./constants/events.schema.json"
+                                            "$ref": "../constants/events.schema.json"
                                         },
                                         "sound_event": {
                                             "description": "The sound event to play when this step happens",
-                                            "$ref": "./constants/sounds.schema.json"
+                                            "$ref": "../constants/sounds.schema.json"
                                         }
                                     }
                                 }
@@ -2793,10 +2793,10 @@
                                 "type": "number"
                             },
                             "filters": {
-                                "$ref": "./types/filters.schema.json"
+                                "$ref": "../types/filters.schema.json"
                             },
                             "start_sound_event": {
-                                "$ref": "./constants/sounds.schema.json"
+                                "$ref": "../constants/sounds.schema.json"
                             }
                         }
                     }
@@ -2972,7 +2972,7 @@
                     "description": "Items that we are interested in snacking on",
                     "type": "array",
                     "items": {
-                        "$ref": "./constants/items.schema.json"
+                        "$ref": "../constants/items.schema.json"
                     }
                 },
                 "snacking_cooldown": {
@@ -3028,7 +3028,7 @@
                 },
                 "prepare_sound": {
                     "description": "Sound to play when the sneeze is about to happen.",
-                    "$ref": "./constants/sounds.schema.json"
+                    "$ref": "../constants/sounds.schema.json"
                 },
                 "prepare_time": {
                     "description": "The time in seconds that the mob takes to prepare to sneeze (while the prepare_sound is playing).\nDefault: 1.0",
@@ -3042,7 +3042,7 @@
                 },
                 "sound": {
                     "description": "Sound to play when the sneeze occurs.",
-                    "$ref": "./constants/sounds.schema.json"
+                    "$ref": "../constants/sounds.schema.json"
                 },
                 "within_radius": {
                     "description": "Distance in blocks that mobs will be startled.\nDefault: 0.0",
@@ -3310,7 +3310,7 @@
                             },
                             "filters": {
                                 "description": "",
-                                "$ref": "./types/filters.schema.json"
+                                "$ref": "../types/filters.schema.json"
                             },
                             "max_activation_range": {
                                 "description": "Upper bound of the activation distance in blocks for this spell\nDefault: -1.0",
@@ -3350,7 +3350,7 @@
                                         },
                                         "entity_type": {
                                             "description": "The entity type of the entities we will spawn in this step",
-                                            "$ref": "./constants/entities.schema.json"
+                                            "$ref": "../constants/entities.schema.json"
                                         },
                                         "num_entities_spawned": {
                                             "description": "Number of entities that will be spawned in this step\nDefault: 1",
@@ -3370,7 +3370,7 @@
                                         },
                                         "sound_event": {
                                             "description": "The sound event to play for this step",
-                                            "$ref": "./constants/sounds.schema.json"
+                                            "$ref": "../constants/sounds.schema.json"
                                         },
                                         "summon_cap": {
                                             "description": "Maximum number of summoned entities at any given time\nDefault: 0",
@@ -3392,7 +3392,7 @@
                             },
                             "start_sound_event": {
                                 "description": "The sound event to play when using this spell",
-                                "$ref": "./constants/sounds.schema.json"
+                                "$ref": "../constants/sounds.schema.json"
                             },
                             "weight": {
                                 "description": "The weight of this spell. Controls how likely the mob is to choose this spell when casting one\nDefault: 0.0",
@@ -3450,7 +3450,7 @@
                 "delay_range": {
                     "description": "Range of time in seconds between uses of this goal.\nDefault: [10.0, 20.0]",
                     "default": [10.0, 20.0],
-                    "$ref": "./types/range.schema.json"
+                    "$ref": "../types/range.schema.json"
                 },
                 "speed_multiplier": {
                     "description": "Movement speed multiplier of the mob when using this AI Goal\nDefault: 1.0",
@@ -3491,7 +3491,7 @@
                     "description": "List of items this mob is tempted by",
                     "type": "array",
                     "items": {
-                        "$ref": "./constants/items.schema.json"
+                        "$ref": "../constants/items.schema.json"
                     }
                 },
                 "speed_multiplier": {
@@ -3625,18 +3625,18 @@
                 },
                 "admire_item_sound": {
                     "description": "The sound event to play when admiring the item",
-                    "$ref": "./constants/sounds.schema.json"
+                    "$ref": "../constants/sounds.schema.json"
                 },
                 "sound_interval": {
                     "description": "The range of time in seconds to randomly wait before playing the sound again.",
                     "default": 0,
-                    "$ref": "./types/range.schema.json"
+                    "$ref": "../types/range.schema.json"
                 },
                 "on_admire_item_start": {
-                    "$ref": "./types/trigger.schema.json"
+                    "$ref": "../types/trigger.schema.json"
                 },
                 "on_admire_item_stop": {
-                    "$ref": "./types/trigger.schema.json"
+                    "$ref": "../types/trigger.schema.json"
                 }
 
             }

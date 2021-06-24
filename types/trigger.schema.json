@@ -4,12 +4,12 @@
     "properties": {
         "event": {
             "description": "The event to run when the conditions for this trigger are met",
-            "$ref": "./constants/events.schema.json"
+            "$ref": "../constants/events.schema.json"
         },
         "target": {
             "description": "The target of the event",
             "default": "self",
-            "$ref": "./constants/targets.schema.json"
+            "$ref": "../constants/targets.schema.json"
         },
         "filters": {
             "description": "The list of conditions for this trigger",

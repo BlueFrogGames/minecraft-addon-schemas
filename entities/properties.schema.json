@@ -9,7 +9,7 @@
                 "event_name": {
                     "description": "Level sound event to be played as the ambient sound.\nDefault: ambient",
                     "default": "ambient",
-                    "$ref": "./constants/sounds.schema.json"
+                    "$ref": "../constants/sounds.schema.json"
                 },
                 "range": {
                     "description": "Maximum time in seconds to randomly add to the ambient sound delay time.\nDefault: 16.000000",
@@ -95,7 +95,7 @@
                         "type": "object",
                         "properties": {
                             "slot": {
-                                "$ref": "./constants/slots.schema.json"
+                                "$ref": "../constants/slots.schema.json"
                             },
                             "drop_chance": {
                                 "type": "number"
@@ -243,11 +243,11 @@
                         {
                             "type": "array",
                             "items": {
-                                "$ref": "./constants/items.schema.json"
+                                "$ref": "../constants/items.schema.json"
                             }
                         },
                         {
-                            "$ref": "./constants/items.schema.json"
+                            "$ref": "../constants/items.schema.json"
                         }
                     ]
                 }

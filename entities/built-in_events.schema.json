@@ -3,16 +3,16 @@
     "type": "object",
     "properties": {
         "minecraft:entity_born": {
-            "$ref": "./types/event.schema.json"
+            "$ref": "../types/event.schema.json"
         },
         "minecraft:entity_spawned": {
-            "$ref": "./types/event.schema.json"
+            "$ref": "../types/event.schema.json"
         },
         "minecraft:entity_transformed": {
-            "$ref": "./types/event.schema.json"
+            "$ref": "../types/event.schema.json"
         },
         "minecraft:on_prime": {
-            "$ref": "./types/event.schema.json"
+            "$ref": "../types/event.schema.json"
         }
     }
 }

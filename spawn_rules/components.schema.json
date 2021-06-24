@@ -72,7 +72,7 @@
             "properties": {
                 "event": {
                     "description": "This is an event that can be triggered from spawning",
-                    "$ref": "./constants/events.schema.json"
+                    "$ref": "../constants/events.schema.json"
                 },
                 "event_skip_count": {
                     "description": "This is the number of mobs spawned before the specified event is triggered",
@@ -89,7 +89,7 @@
             }
         },
         "minecraft:biome_filter": {
-            "$ref": "./types/filters.schema.json",
+            "$ref": "../types/filters.schema.json",
             "default": {
                 "test": "has_biome_tag",
                 "operator": "==",
@@ -119,7 +119,7 @@
                         "type": "number"
                     },
                     "entity_type": {
-                        "$ref": "./constants/entities.schema.json"
+                        "$ref": "../constants/entities.schema.json"
                     }
                 }
             }
