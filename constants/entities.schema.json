@@ -8,6 +8,7 @@
             "enum": [
                 "minecraft:armor_stand",
                 "minecraft:arrow",
+                "minecraft:axolotl",
                 "minecraft:bat",
                 "minecraft:blaze",
                 "minecraft:boat",
@@ -34,6 +35,8 @@
                 "minecraft:fireworks_rocket",
                 "minecraft:fox",
                 "minecraft:ghast",
+                "minecraft:glow_squid",
+                "minecraft:goat",
                 "minecraft:guardian",
                 "minecraft:hopper_minecart",
                 "minecraft:horse",
