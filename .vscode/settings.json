@@ -11,28 +11,28 @@
                 // Entity behavior files
                 "/behaviors/entities/*.json"
             ],
-            "url": "https://raw.githubusercontent.com/BlueFrog130/minecraft-add-on-schemas/master/entity.schema.json"
+            "url": "https://raw.githubusercontent.com/BlueFrogGames/minecraft-add-on-schemas/master/entity.schema.json"
         },
         {
             "fileMatch": [
                 // Entity resource files
                 "/resources/entity/*.json"
             ],
-            "url": "https://raw.githubusercontent.com/BlueFrog130/minecraft-add-on-schemas/master/client_entity.schema.json"
+            "url": "https://raw.githubusercontent.com/BlueFrogGames/minecraft-add-on-schemas/master/client_entity.schema.json"
         },
         {
             // Spawn rules
             "fileMatch": [
                 "/behaviors/spawn_rules/*.json"
             ],
-            "url": "https://raw.githubusercontent.com/BlueFrog130/minecraft-add-on-schemas/master/spawn_rules.schema.json"
+            "url": "https://raw.githubusercontent.com/BlueFrogGames/minecraft-add-on-schemas/master/spawn_rules.schema.json"
         },
         {
             // Items
             "fileMatch": [
                 "/behaviors/items/*.json"
             ],
-            "url": "https://raw.githubusercontent.com/BlueFrog130/minecraft-add-on-schemas/master/item.schema.json"
+            "url": "https://raw.githubusercontent.com/BlueFrogGames/minecraft-add-on-schemas/master/item.schema.json"
         }
     ]
 }

@@ -4,16 +4,16 @@
     "properties": {
         "event": {
             "description": "The event to run when the conditions for this trigger are met",
-            "$ref": "https://raw.githubusercontent.com/BlueFrog130/minecraft-add-on-schemas/master/constants/events.schema.json"
+            "$ref": "https://raw.githubusercontent.com/BlueFrogGames/minecraft-add-on-schemas/master/constants/events.schema.json"
         },
         "target": {
             "description": "The target of the event",
             "default": "self",
-            "$ref": "https://raw.githubusercontent.com/BlueFrog130/minecraft-add-on-schemas/master/constants/targets.schema.json"
+            "$ref": "https://raw.githubusercontent.com/BlueFrogGames/minecraft-add-on-schemas/master/constants/targets.schema.json"
         },
         "filters": {
             "description": "The list of conditions for this trigger",
-            "$ref": "https://raw.githubusercontent.com/BlueFrog130/minecraft-add-on-schemas/master/types/filters.schema.json"
+            "$ref": "https://raw.githubusercontent.com/BlueFrogGames/minecraft-add-on-schemas/master/types/filters.schema.json"
         }
     }
 }

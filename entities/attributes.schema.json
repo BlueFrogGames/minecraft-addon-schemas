@@ -9,7 +9,7 @@
                 "damage": {
                     "description": "Range of the random amount of damage the melee attack deals. A negative value can heal the entity instead of hurting it",
                     "oneOf": [
-                        { "$ref": "https://raw.githubusercontent.com/BlueFrog130/minecraft-add-on-schemas/master/types/range.schema.json" },
+                        { "$ref": "https://raw.githubusercontent.com/BlueFrogGames/minecraft-add-on-schemas/master/types/range.schema.json" },
                         { "type": "number" }
                     ]
                 },
@@ -19,7 +19,7 @@
                 },
                 "effect_name": {
                     "description": "Identifier of the status ailment to apply to an entity attacked by this entity's melee attack",
-                    "$refs": "https://raw.githubusercontent.com/BlueFrog130/minecraft-add-on-schemas/master/constants/effects.shcema.json"
+                    "$refs": "https://raw.githubusercontent.com/BlueFrogGames/minecraft-add-on-schemas/master/constants/effects.shcema.json"
                 }
             }
         },
@@ -31,18 +31,18 @@
                     "description": "List of effects to add to this entity after adding this component",
                     "type": "array",
                     "items": {
-                        "$ref": "https://raw.githubusercontent.com/BlueFrog130/minecraft-add-on-schemas/master/types/effects.schema.json"
+                        "$ref": "https://raw.githubusercontent.com/BlueFrogGames/minecraft-add-on-schemas/master/types/effects.schema.json"
                     }
                 },
                 "remove_effects": {
                     "description": "List of identifiers of effects to be removed from this entity after adding this component",
                     "oneOf": [
                         {
-                            "$refs": "https://raw.githubusercontent.com/BlueFrog130/minecraft-add-on-schemas/master/constants/effects.shcema.json"
+                            "$refs": "https://raw.githubusercontent.com/BlueFrogGames/minecraft-add-on-schemas/master/constants/effects.shcema.json"
                         },
                         {
                             "type": "array",
-                            "$refs": "https://raw.githubusercontent.com/BlueFrog130/minecraft-add-on-schemas/master/constants/effects.shcema.json"
+                            "$refs": "https://raw.githubusercontent.com/BlueFrogGames/minecraft-add-on-schemas/master/constants/effects.shcema.json"
                         }
                     ]
                 }

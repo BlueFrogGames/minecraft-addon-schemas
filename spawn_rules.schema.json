@@ -37,7 +37,7 @@
                 "conditions": {
                     "type": "array",
                     "items": {
-                        "$ref": "https://raw.githubusercontent.com/BlueFrog130/minecraft-add-on-schemas/master/spawn_rules/components.schema.json"
+                        "$ref": "https://raw.githubusercontent.com/BlueFrogGames/minecraft-add-on-schemas/master/spawn_rules/components.schema.json"
                     },
                     "default": [{}]
                 }

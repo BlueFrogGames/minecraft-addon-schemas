@@ -6,10 +6,10 @@
     "definitions": {
         "components": {
             "allOf": [
-                { "$ref": "https://raw.githubusercontent.com/BlueFrog130/minecraft-add-on-schemas/master/entities/ai_goals.schema.json" },
-                { "$ref": "https://raw.githubusercontent.com/BlueFrog130/minecraft-add-on-schemas/master/entities/attributes.schema.json" },
-                { "$ref": "https://raw.githubusercontent.com/BlueFrog130/minecraft-add-on-schemas/master/entities/components.schema.json" },
-                { "$ref": "https://raw.githubusercontent.com/BlueFrog130/minecraft-add-on-schemas/master/entities/properties.schema.json" }
+                { "$ref": "https://raw.githubusercontent.com/BlueFrogGames/minecraft-add-on-schemas/master/entities/ai_goals.schema.json" },
+                { "$ref": "https://raw.githubusercontent.com/BlueFrogGames/minecraft-add-on-schemas/master/entities/attributes.schema.json" },
+                { "$ref": "https://raw.githubusercontent.com/BlueFrogGames/minecraft-add-on-schemas/master/entities/components.schema.json" },
+                { "$ref": "https://raw.githubusercontent.com/BlueFrogGames/minecraft-add-on-schemas/master/entities/properties.schema.json" }
             ]
         }
     },
@@ -65,11 +65,11 @@
                 "events": {
                     "type": "object",
                     "allOf": [
-                        { "$ref": "https://raw.githubusercontent.com/BlueFrog130/minecraft-add-on-schemas/master/entities/built-in_events.schema.json" },
+                        { "$ref": "https://raw.githubusercontent.com/BlueFrogGames/minecraft-add-on-schemas/master/entities/built-in_events.schema.json" },
                         {
                             "patternProperties": {
                                 "^.*$": {
-                                    "$ref": "https://raw.githubusercontent.com/BlueFrog130/minecraft-add-on-schemas/master/types/event.schema.json"
+                                    "$ref": "https://raw.githubusercontent.com/BlueFrogGames/minecraft-add-on-schemas/master/types/event.schema.json"
                                 }
                             },
                             "additionalProperties": false,

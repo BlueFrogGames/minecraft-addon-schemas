@@ -29,7 +29,7 @@
                     }
                 },
                 "components": {
-                    "$ref": "https://raw.githubusercontent.com/BlueFrog130/minecraft-add-on-schemas/master/items/components.schema.json"
+                    "$ref": "https://raw.githubusercontent.com/BlueFrogGames/minecraft-add-on-schemas/master/items/components.schema.json"
                 }
             }
         }
