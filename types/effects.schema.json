@@ -4,7 +4,7 @@
     "properties": {
         "effect": {
             "type": "string",
-            "$ref": "https://raw.githubusercontent.com/BlueFrogGames/minecraft-add-on-schemas/master/constants/effects.schema.json"
+            "$ref": "./constants/effects.schema.json"
         },
         "duration": {
             "type": "number",
