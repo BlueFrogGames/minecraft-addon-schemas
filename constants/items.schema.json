@@ -33,6 +33,8 @@
                 "stick",
                 "bowl",
                 "mushroom_stew",
+                "glow_ink_sac",
+                "glow_item_frame",
                 "golden_sword",
                 "golden_shovel",
                 "golden_pickaxe",
@@ -239,7 +241,18 @@
                 "honeycomb",
                 "honey_bottle",
                 "board",
-                "portfolio"
+                "portfolio",
+                "spyglass",
+                "raw_copper",
+                "raw_copper_block",
+                "raw_gold",
+                "raw_gold_block",
+                "raw_iron",
+                "raw_iron_block",
+                "cobbled_deepslate",
+                "glow_berries",
+                "spore_blossom",
+                "cave_vines"
             ]
         }
     ]
