@@ -9,6 +9,7 @@ These steps are for [Visual Studio Code](https://code.visualstudio.com/)
 2. Create `settings.json` folder
 3. Add the following:
 ```jsonc
+{
     // Allows comments in JSON files
     "files.associations": {
         "*.json": "jsonc"
@@ -19,33 +20,34 @@ These steps are for [Visual Studio Code](https://code.visualstudio.com/)
         {
             "fileMatch": [
                 // Entity behavior files
-                "/behaviors/entities/*.json"
+                "/behaviors/entities/**/*.json"
             ],
-            "url": "https://raw.githubusercontent.com/BlueFrogGames/minecraft-add-on-schemas/master/entity.schema.json"
+            "url": "https://raw.githubusercontent.com/BlueFrogGames/minecraft-addon-schemas/master/entity.schema.json"
         },
         {
             "fileMatch": [
                 // Entity resource files
-                "/resources/entity/*.json"
+                "/resources/entity/**/*.json"
             ],
-            "url": "https://raw.githubusercontent.com/BlueFrogGames/minecraft-add-on-schemas/master/client_entity.schema.json"
+            "url": "https://raw.githubusercontent.com/BlueFrogGames/minecraft-addon-schemas/master/client_entity.schema.json"
         },
         {
             // Spawn rules
             "fileMatch": [
-                "/behaviors/spawn_rules/*.json"
+                "/behaviors/spawn_rules/**/*.json"
             ],
-            "url": "https://raw.githubusercontent.com/BlueFrogGames/minecraft-add-on-schemas/master/spawn_rules.schema.json"
+            "url": "https://raw.githubusercontent.com/BlueFrogGames/minecraft-addon-schemas/master/spawn_rules.schema.json"
         },
         {
             // Items
             "fileMatch": [
-                "/behaviors/items/*.json"
+                "/behaviors/items/**/*.json"
             ],
-            "url": "https://raw.githubusercontent.com/BlueFrogGames/minecraft-add-on-schemas/master/item.schema.json"
+            "url": "https://raw.githubusercontent.com/BlueFrogGames/minecraft-addon-schemas/master/item.schema.json"
         }
     ]
+}
 ```
   The `"fileMatch"` option checks the schema against any files ending in `".behavior.json"` or any file within the `entities/` directory
 
-For more details, or a reference, see the `settings.json` in the [example](https://github.com/BlueFrogGames/minecraft-add-on-schemas/blob/master/example/.vscode/settings.json)
+For more details, or a reference, see the `settings.json` in the [example](https://github.com/BlueFrogGames/minecraft-addon-schemas/blob/master/example/.vscode/settings.json)
