@@ -3,23 +3,21 @@
     "type": "object",
     "allOf": [
         { "$ref": "#/definitions/add-remove" },
+        { "$ref": "#/definitions/randomize" },
         {
             "properties": {
-                "randomize": {
+                "sequence": {
                     "type": "array",
                     "items": {
+                        "properties": {
+                            "filters": {
+                                "$ref": "./filters.schema.json"
+                            }
+                        },
                         "allOf": [
                             { "$ref": "#/definitions/add-remove" },
-                            {
-                                "properties": {
-                                    "weight": {
-                                        "type": "number"
-                                    }
-                                },
-                                "required": ["weight"]
-                            }
+                            { "$ref": "#/definitions/randomize" }
                         ]
-                        
                     }
                 }
             }
@@ -56,6 +54,27 @@
                 },
                 "remove": {
                     "$ref": "#/definitions/remove"
+                }
+            }
+        },
+        "randomize": {
+            "properties": {
+                "randomize": {
+                    "type": "array",
+                    "items": {
+                        "allOf": [
+                            { "$ref": "#/definitions/add-remove" },
+                            {
+                                "properties": {
+                                    "weight": {
+                                        "type": "number"
+                                    }
+                                },
+                                "required": ["weight"]
+                            }
+                        ]
+
+                    }
                 }
             }
         }
