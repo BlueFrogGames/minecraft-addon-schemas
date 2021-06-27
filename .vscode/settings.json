@@ -33,6 +33,14 @@
                 "/behaviors/items/**/*.json"
             ],
             "url": "https://raw.githubusercontent.com/BlueFrogGames/minecraft-addon-schemas/master/item.schema.json"
+        },
+
+        // TESTING PURPOSES
+        {
+            "fileMatch": [
+                "/test/event.json"
+            ],
+            "url": "./types/event.schema.json"
         }
     ]
 }
