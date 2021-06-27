@@ -122,7 +122,26 @@
                         },
                         "value": {
                             "type": "number",
-                            "description": "(Required) A floating point value."
+                            "description": "(Required) A floating point value.",
+                            "minimum": 0.0,
+                            "maximum": 1.0,
+                            "anyOf": [
+                                {
+                                    "enum": [
+                                        // Noon
+                                        0.0,
+                                        // Sunset
+                                        0.25,
+                                        //Midnight
+                                        0.5,
+                                        //Sunrise
+                                        0.75
+                                    ]
+                                },
+                                {
+                                    "type": "number"
+                                }
+                            ]
                         }
                     }
                 },
@@ -166,7 +185,19 @@
                         },
                         "value": {
                             "type": "string",
-                            "description": "The Ability type to test. The following abilities are usable to test for:"
+                            "description": "The Ability type to test. The following abilities are usable to test for:",
+                            "enum": [
+                                "flyspeed",
+                                "flying",
+                                "instabuild",
+                                "invulnerable",
+                                "lightning",
+                                "mayfly",
+                                "mute",
+                                "noclip",
+                                "walkspeed",
+                                "worldbuilder"
+                            ]
                         }
                     }
                 },
@@ -254,7 +285,35 @@
                         },
                         "value": {
                             "type": "string",
-                            "description": "The Damage type to test"
+                            "description": "The Damage type to test",
+                            "enum": [
+                                "anvil",
+                                "attack",
+                                "block_explosion",
+                                "contact",
+                                "drowning",
+                                "entity_explosion",
+                                "fall",
+                                "falling_block",
+                                "fatal",
+                                "fire",
+                                "fire_tick",
+                                "fly_into_wall",
+                                "lava",
+                                "magic",
+                                "none",
+                                "override",
+                                "piston",
+                                "projectile",
+                                "stalactite",
+                                "stalagmite",
+                                "starve",
+                                "suffocation",
+                                "suicide",
+                                "thorns",
+                                "void",
+                                "wither"
+                            ]
                         }
                     }
                 },
@@ -282,9 +341,6 @@
                 },
                 {
                     "required": [
-                        "subject",
-                        "operator",
-                        "value",
                         "test"
                     ],
                     "properties": {
@@ -300,7 +356,15 @@
                         },
                         "value": {
                             "type": "string",
-                            "description": "(Optional) A string value."
+                            "description": "(Optional) A string value.",
+                            "anyOf": [
+                                {
+                                    "type": "string"
+                                },
+                                {
+                                    "$ref": "../constants/effects.schema.json"
+                                }
+                            ]
                         }
                     }
                 },
@@ -406,7 +470,9 @@
                         },
                         "value": {
                             "type": "integer",
-                            "description": "(Required) An integer value set between 0 and 24000"
+                            "description": "(Required) An integer value set between 0 and 24000",
+                            "minimum": 0,
+                            "maximum": 24000
                         }
                     }
                 },
@@ -618,7 +684,7 @@
                             "$ref": "#/definitions/subject"
                         },
                         "value": {
-                            "type": "string",
+                            "$ref": "../constants/biomes.schema.json",
                             "description": "(Required) The Biome type to test"
                         }
                     }
@@ -640,7 +706,7 @@
                             "$ref": "#/definitions/subject"
                         },
                         "value": {
-                            "type": "string",
+                            "$ref": "../constants/blocks.schema.json",
                             "description": "(Required) Name of the block to look for."
                         }
                     }
@@ -663,7 +729,9 @@
                         },
                         "value": {
                             "type": "number",
-                            "description": "(Required) The brightness value to compare with."
+                            "description": "(Required) The brightness value to compare with.",
+                            "minimum": 0,
+                            "maximum": 1
                         }
                     }
                 },
@@ -706,7 +774,25 @@
                         },
                         "value": {
                             "type": "string",
-                            "description": "(Required) The Palette Color to test"
+                            "description": "(Required) The Palette Color to test",
+                            "enum": [
+                                "black",
+                                "blue",
+                                "brown",
+                                "cyan",
+                                "gray",
+                                "green",
+                                "light_blue",
+                                "light_green",
+                                "magenta",
+                                "orange",
+                                "pink",
+                                "purple",
+                                "red",
+                                "silver",
+                                "white",
+                                "yellow"
+                            ]
                         }
                     }
                 },
@@ -749,7 +835,13 @@
                         },
                         "value": {
                             "type": "string",
-                            "description": "(Required) The game's difficulty level to test"
+                            "description": "(Required) The game's difficulty level to test",
+                            "enum": [
+                                "easy",
+                                "hard",
+                                "normal",
+                                "peaceful"
+                            ]
                         }
                     }
                 },
@@ -1132,7 +1224,13 @@
                         },
                         "value": {
                             "type": "string",
-                            "description": "(Required) The Biome temperature category to test."
+                            "description": "(Required) The Biome temperature category to test.",
+                            "enum": [
+                                "cold",
+                                "mild",
+                                "ocean",
+                                "warm"
+                            ]
                         }
                     }
                 },
@@ -1154,7 +1252,9 @@
                         },
                         "value": {
                             "type": "number",
-                            "description": "(Required) The Biome temperature value to compare with."
+                            "description": "(Required) The Biome temperature value to compare with.",
+                            "minimum": 0,
+                            "maximum": 1
                         }
                     }
                 },
@@ -1261,7 +1361,9 @@
                         },
                         "value": {
                             "type": "integer",
-                            "description": "(Required) An integer value."
+                            "description": "(Required) An integer value.",
+                            "minimum": 0,
+                            "maximum": 16
                         }
                     }
                 },
@@ -1283,7 +1385,9 @@
                         },
                         "value": {
                             "type": "number",
-                            "description": "(Required) A floating point value."
+                            "description": "(Required) A floating point value.",
+                            "minimum": 0,
+                            "maximum": 1
                         }
                     }
                 },
@@ -1305,7 +1409,9 @@
                         },
                         "value": {
                             "type": "integer",
-                            "description": "(Required) A integer value."
+                            "description": "(Required) A integer value.",
+                            "minimum": 0,
+                            "maximum": 7
                         }
                     }
                 },
@@ -1461,8 +1567,6 @@
                 },
                 {
                     "required": [
-                        "subject",
-                        "operator",
                         "value",
                         "test"
                     ],
