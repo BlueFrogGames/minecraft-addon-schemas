@@ -41,6 +41,12 @@
                 "/test/event.json"
             ],
             "url": "./types/event.schema.json"
+        },
+        {
+            "fileMatch": [
+                "/test/entity.json"
+            ],
+            "url": "./entity.schema.json"
         }
     ]
 }
