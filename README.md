@@ -22,28 +22,28 @@ These steps are for [Visual Studio Code](https://code.visualstudio.com/)
                 // Entity behavior files
                 "/behaviors/entities/**/*.json"
             ],
-            "url": "https://raw.githubusercontent.com/BlueFrogGames/minecraft-addon-schemas/master/entity.schema.json"
+            "url": "https://raw.githubusercontent.com/BlueFrogGames/minecraft-addon-schemas/1.17/entity.schema.json"
         },
         {
             "fileMatch": [
                 // Entity resource files
                 "/resources/entity/**/*.json"
             ],
-            "url": "https://raw.githubusercontent.com/BlueFrogGames/minecraft-addon-schemas/master/client_entity.schema.json"
+            "url": "https://raw.githubusercontent.com/BlueFrogGames/minecraft-addon-schemas/1.17/client_entity.schema.json"
         },
         {
             // Spawn rules
             "fileMatch": [
                 "/behaviors/spawn_rules/**/*.json"
             ],
-            "url": "https://raw.githubusercontent.com/BlueFrogGames/minecraft-addon-schemas/master/spawn_rules.schema.json"
+            "url": "https://raw.githubusercontent.com/BlueFrogGames/minecraft-addon-schemas/1.17/spawn_rules.schema.json"
         },
         {
             // Items
             "fileMatch": [
                 "/behaviors/items/**/*.json"
             ],
-            "url": "https://raw.githubusercontent.com/BlueFrogGames/minecraft-addon-schemas/master/item.schema.json"
+            "url": "https://raw.githubusercontent.com/BlueFrogGames/minecraft-addon-schemas/1.17/item.schema.json"
         }
     ]
 }
