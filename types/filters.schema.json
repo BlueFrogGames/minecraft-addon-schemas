@@ -219,7 +219,8 @@
                         },
                         "value": {
                             "type": "string",
-                            "description": "(Required) The tag to look for"
+                            "description": "(Required) The tag to look for",
+                            "$ref": "../constants/biome_tags.schema.json"
                         }
                     }
                 },
