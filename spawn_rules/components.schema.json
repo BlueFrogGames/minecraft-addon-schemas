@@ -94,6 +94,19 @@
                 "test": "has_biome_tag",
                 "operator": "==",
                 "value": ""
+            },
+            "properties": {
+                "test": {
+                    "const": "has_biome_tag"
+                },
+                "operator": {
+                    "enum": [
+                        "==",
+                        "!=",
+                        "equals",
+                        "not"
+                    ]
+                }
             }
         },
         "minecraft:density_limit": {
