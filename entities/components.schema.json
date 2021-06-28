@@ -380,6 +380,27 @@
                     "default": false
                 }
             }
+        },
+        "fire_event": {
+            "properties": {
+                "event": {
+                    "type": "string"
+                }
+            }
+        },
+        "fire_event_target": {
+            "allOf": [
+                {
+                    "$ref": "#/definitions/fire_event"
+                },
+                {
+                    "properties": {
+                        "target": {
+                            "$ref": "../constants/targets.schema.json"
+                        }
+                    }
+                }
+            ]
         }
     },
     "properties": {
@@ -3067,6 +3088,211 @@
         "minecraft:on_wake_with_owner": {
             "description": "On wake event",
             "$ref": "../types/trigger.schema.json"
+        },
+        "minecraft:admire_item": {
+            "description": "minecraft:admire_item allows an entity to ignore attackable targets for a given duration.",
+            "examples": [
+                {
+                    "cooldown_after_being_attacked": 5,
+                    "duration":10
+                }
+            ],
+            "default": {},
+            "properties": {
+                "cooldown_after_being_attacked": {
+                    "description": "Duration, in seconds, for which mob won't admire items if it was hurt",
+                    "type": "integer",
+                    "minimum": 0,
+                    "default": 0
+                },
+                "duration": {
+                    "description": "Duration, in seconds, that the mob is pacified.",
+                    "type": "integer",
+                    "minimum": 0,
+                    "default": 10
+                }
+            }
+        },
+        "minecraft:attack_cooldown": {
+            "description": "minecraft:attack_cooldown adds a cooldown to an entity. The intention of this cooldown is to be used to prevent the entity from attempting to acquire new attack targets.",
+            "properties": {
+                "attack_cooldown_complete_event": {
+                    "description": "Event to be run when the cooldown is complete.",
+                    "$ref": "../types/trigger.schema.json"
+                },
+                "attack_cooldown_time": {
+                    "description": "Amount of time in seconds for the cooldown. Can be specified as a number or a pair of numbers (min and max).",
+                    "$ref": "../types/range.schema.json"
+                }
+            }
+        },
+        "minecraft:buoyant": {
+            "description": "minecraft:buoyant allows an entity to float on the specified liquid blocks.",
+            "properties": {
+                "apply_gravity": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Applies gravity each tick. Causes more of a wave simulation, but will cause more gravity to be applied outside liquids."
+                },
+                "base_buoyancy": {
+                    "type": "number",
+                    "default": 1.0,
+                    "description": "Base buoyancy used to calculate how much will a mob float."
+                },
+                "big_wave_probability": {
+                    "type": "number",
+                    "default": 0.03,
+                    "description": "Probability for a big wave hitting the entity. Only used if simulate_waves is true.",
+                    "minimum": 0,
+                    "maximum": 1
+                },
+                "big_wave_speed": {
+                    "type": "number",
+                    "default": 10.0,
+                    "description": "Multiplier for the speed to make a big wave. Triggered depending on big_wave_probability."
+                },
+                "drag_down_on_buoyancy_removed": {
+                    "type": "number",
+                    "default": 0.0,
+                    "description": "How much an actor will be dragged down when the Buoyancy Component is removed."
+                },
+                "liquid_blocks": {
+                    "type": "array",
+                    "items": {
+                        "anyOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+
+                                "enum": [
+                                    "minecraft:water",
+                                    "minecraft:flowing_water",
+                                    "minecraft:lava",
+                                    "minecraft:flowing_lava"
+                                ]
+                            }
+                        ]
+                    }
+                },
+                "simulate_waves": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Should the movement simulate waves going through."
+                }
+            },
+            "dependencies": {
+                "big_wave_probability": ["simulate_waves"]
+            }
+        },
+        "minecraft:combat_regeneration": {
+            "description": "minecraft:combat_regenerationgives Regeneration I and removes Mining Fatigue from the mob that kills the Actor's attack target.",
+            "properties": {
+                "regeneration_duration": {
+                    "type": "integer",
+                    "default": 5,
+                    "description": "The duration in seconds that the mob will gain Regeneration I."
+                },
+                "apply_to_self": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Whether the mob will grant itself Combat Regeneration if it kills the target."
+                },
+                "apply_to_family": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Whether the mob will grant mobs of the same type Combat Regeneration if they kill the target."
+                }
+            }
+        },
+        "minecraft:drying_out_timer": {
+            "description": "minecraft:drying_out_timer sets a timer for drying out that will count down and fire 'dried_out_event' or will stop as soon as the entity will get under rain or water and fire stopped_drying_out_event.",
+            "properties": {
+                "total_time": {
+                    "type": "number",
+                    "default": 0.0,
+                    "minimum": 0,
+                    "description": "Amount of time in seconds to dry out fully."
+                },
+                "dried_out_event": {
+                    "description": "Event to fire when the drying out time runs out.",
+                    "$ref": "#/definitions/fire_event"
+                },
+                "recover_after_dried_out_event": {
+                    "description": "Event to fire when entity was already dried out but received increase in water supply.",
+                    "$ref": "#/definitions/fire_event"
+                },
+                "stopped_drying_out_event": {
+                    "description": "Event to fire when entity stopped drying out, for example got into water or under rain.",
+                    "$ref": "#/definitions/fire_event"
+                },
+                "water_bottle_refill_time": {
+                    "type": "number",
+                    "default": 0.0,
+                    "minimum": 0,
+                    "description": "Optional amount of additional time in seconds given by using splash water bottle on entity."
+                }
+            }
+        },
+        "minecraft:group_size": {
+            "description": "minecraft:group_size keeps track of entity group size in the given radius.",
+            "properties": {
+                "filters": {
+                    "description": "The list of conditions that must be satisfied for other entities to be counted towards group size.",
+                    "$ref": "../types/filters.schema.json"
+                },
+                "radius": {
+                    "type": "number",
+                    "default": 16,
+                    "description": "Radius from center of entity."
+                }
+            }
+        },
+        "minecraft:inside_block_notifier": {
+            "description": "minecraft:inside_block_notifier verifies whether the entity is inside any of the listed blocks.",
+            "properties": {
+                "block_list": {
+                    "type": "array",
+                    "items": {
+                        "properties": {
+                            "block": {
+                                "properties": {
+                                    "name": {
+                                        "$ref": "../constants/blocks.schema.json"
+                                    },
+                                    "states": {
+                                        "properties": {
+                                            "drag_down": {
+                                                "type": "boolean"
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            "entered_block_event": {
+                                "$ref": "#/definitions/fire_event_target"
+                            },
+                            "exited_block_event": {
+                                "$ref": "#/definitions/fire_event_target"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "minecraft:instant_despawn": {
+            "description": "minecraft:instant_despawn despawns the Actor immediately.",
+            "properties": {
+                "remove_child_entities": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "If true, all entities linked to this entity in a child relationship (eg. leashed) will also be despawned."
+                }
+            }
+        },
+        "minecraft:out_of_control": {
+            "description": "minecraft:out_of_control defines the entity's 'out of control' state.",
+            "default": {}
         }
     }
 }
